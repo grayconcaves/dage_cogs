@@ -8,6 +8,7 @@ This repository contains a few test cogs I've made for my Red V3 bot, Super Dage
 ## Cogs
 
 | Name | Description |
+| --- | --- | --- |
 | Ao3 | Takes an ao3 link and compiles its info into a message
 
 
