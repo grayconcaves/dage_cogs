@@ -1,0 +1,401 @@
+# Ao3 cog for Dage
+
+# Discord
+import discord
+
+# Red
+from redbot.core import commands, checks, Config
+from redbot.core.utils.chat_formatting import humanize_list
+from redbot.core.utils import deduplicate_iterables
+from redbot.core.utils.predicates import MessagePredicate, ReactionPredicate
+from redbot.core.utils.menus import start_adding_reactions
+
+# Libs
+import asyncio
+import aiohttp
+from bs4 import BeautifulSoup, SoupStrainer
+
+BaseCog = getattr(commands, "Cog", object)
+
+class Ao3(BaseCog):
+    """Ao3 commands"""
+
+    def __init__(self, bot):
+        self.bot = bot
+        self.session = aiohttp.ClientSession()
+        self.config = Config.get_conf(self, identifier=9657852, force_registration=True)
+        self.config.register_guild(
+            autodelete= False,
+            censor = True,
+            embed = False,
+            pairlimit = 3,
+            taglimit = 5,
+            fandomlimit = 1,
+            defaultformat = "**{title}** by **{authors}**\n{url}\n**Fandoms:** {fandom}\n**Rating:** {rating}     **Warnings:** {warnings}\n**Relationships:** {pairing}\n**Tags:** {tags}\n**Summary:** {summary}**Words:** {words}     **Chapters:** {totalchapters}\n**Notes by {reccer}**: {notes}",
+            formatting = "Title: **__{title}__**\nAuthor: {authors}\nFandom: {fandom}\nPairing: {pairing}\nRating: {rating}\nWarning: {warnings}\n\nSummary: {summary}\nTags: {tags}\nChapters: {totalchapters}\n\nRecced by {reccer} {notes} \nRead it here: {url}"         
+        )
+    
+    @commands.guild_only()
+    @commands.command()
+    async def ao3(self, ctx, ficlink, *, notes=""):
+        """Returns details of a fic from a link"""      
+
+        #SET NOTES
+        if notes is "":
+            notes = "None."
+        
+        #GET URL
+        if "chapter" in ficlink:
+            newlink = ficlink.split("chapters")[0]
+            ficlink = str(newlink)
+        firstchap = "{}/navigate".format(ficlink)
+        async with self.session.get(firstchap) as ao3navigation:
+            navigate = BeautifulSoup(await ao3navigation.text(), 'html.parser', parse_only=SoupStrainer("ol"))
+        firstchap = navigate.find("li").a['href']
+        url = "https://archiveofourown.org{}?view_adult=true".format(firstchap)
+
+        #START SCRAPING
+        async with self.session.get(url) as ao3session:
+            result = BeautifulSoup(await ao3session.text(), 'html.parser')
+    
+        #GET AUTHORS
+        try:
+            a = result.find_all("a", {'rel': 'author'})
+            author_list = []
+            for author in a:
+                author_list.append(author.string.strip())
+            try:
+                authors = humanize_list(deduplicate_iterables(author_list))
+            except:
+                authors = "Anonymous"
+        except:
+            return await ctx.send("Error loading author list.")
+        ''   
+        #GET TITLE
+        try:
+            preface = result.find("div", {'class': 'preface group'}).h2.string
+            title = str(preface.strip())
+        except:
+            title = "No title found."
+
+        #GET FANDOM
+        try:
+            fan = result.find("dd", {'class': 'fandom tags'})
+            fan_list = []
+            fandomlimit = await self.config.guild(ctx.guild).fandomlimit()
+            for fandom in fan.find_all("li", limit=fandomlimit):
+                fan_list.append(fandom.a.string)
+            fandom = humanize_list(fan_list)
+        except:
+            fandom = "No fandom found."
+        
+        #GET PAIRING
+        try:
+            reltags = result.find("dd", {'class': 'relationship tags'})
+            pair_list = []
+            pairlimit = await self.config.guild(ctx.guild).pairlimit()
+            for rel in reltags.find_all("li", limit=pairlimit):
+                pair_list.append(rel.a.string)
+            pairing = humanize_list(pair_list)
+        except:
+            pairing = "No Pairing."
+
+        #GET CHAPTERS
+        chapters = result.find("dd", {'class': 'chapters'})
+        totalchapters = str(BeautifulSoup.getText(chapters))
+
+        #GET STATUS
+        chap_list = totalchapters.split("/")
+        if "?" in chap_list[1]:
+            status = "Work in Progress"
+        elif chap_list[0] is not chap_list[1]:
+            status = "Work in Progress"
+        else:
+            status = "Complete"
+
+        #GET RATING
+        try:
+            rate = result.find("dd", {'class': 'rating tags'})
+            rating = rate.a.string
+        except:
+            rating = "Not Rated"
+
+        #GET SUMMARY
+        try:
+            div = result.find("div", {'class': 'preface group'})
+            userstuff = div.find("blockquote", {'class': 'userstuff'})
+            stuff = str(BeautifulSoup.getText(userstuff))
+            summarytest = "{}".format(stuff).replace('. ', '**').replace('.', '. ')
+            summary = "{}".format(summarytest).replace('**', '. \n\n')
+        except:
+            summary = "No work summary found." 
+
+        #GET TAGS
+        try:
+            use_censor = await self.config.guild(ctx.guild).censor()
+            freeform = result.find("dd", {'class': 'freeform tags'})
+            tag_list = []
+            taglimit = await self.config.guild(ctx.guild).taglimit()
+            for tag in freeform.find_all("li", limit=taglimit):
+                tag_list.append(tag.a.string)
+            if "Explicit" in rating and use_censor:
+                tags = "||{}||".format(humanize_list(tag_list))
+            else:
+                tags = humanize_list(tag_list)
+
+        except:
+            tags = "No tags found."
+
+        #GET LANGUAGE
+        language = result.find("dd", {'class': 'language'}).string.strip()
+
+        #GET WORDS
+        words = int(result.find("dd", {'class': 'words'}).string.replace(",",""))
+
+        #GET WARNINGS
+        warntags = result.find("dd", {'class': 'warning tags'})
+        warn_list = []
+        try:
+            for warning in warntags.find_all("li"):
+                warn_list.append(warning.a.string)
+            warnings = humanize_list(warn_list)
+        except:
+            warnings = "No warnings found."
+            
+        #CHECK INFO FORMAT
+        use_embed = await self.config.guild(ctx.guild).embed()
+        data = await self.config.guild(ctx.guild).formatting()
+
+        if use_embed:
+            data = discord.Embed(description=summary, title=title, url=ficlink, colour=3553599)
+            data.add_field(name="Author:", value=authors, inline=False)
+            data.add_field(name="Fandom:", value=fandom, inline=False)
+            data.add_field(name="Rating:", value=rating, inline=False)
+            data.add_field(name="Pairings:", value=pairing, inline=False)
+            data.add_field(name="Tags:", value=tags, inline=False)
+            data.add_field(name="Rec Notes by {}: ".format(ctx.author), value=notes, inline=False)
+            data.set_footer(text="Language: {}     |       Words: {}       |       Status: {}        ".format(language, words, status))
+            ao3msg = await ctx.send(embed=data)
+
+        else:
+            params = {
+                "title": title, 
+                "authors": authors, 
+                "rating": rating, 
+                "warnings": warnings, 
+                "language": language,
+                "fandom": fandom, 
+                "pairing": pairing, 
+                "tags": tags, 
+                "summary": summary,
+                "totalchapters": totalchapters,
+                "status": status, 
+                "words": words, 
+                "reccer" : ctx.author.mention,
+                "notes": notes,
+                "url": "<{}>".format(ficlink),
+            }
+            ao3msg = await ctx.send(data.format(**params))
+
+        start_adding_reactions(ao3msg, ReactionPredicate.YES_OR_NO_EMOJIS)
+
+        pred = ReactionPredicate.yes_or_no(ao3msg, ctx.author)
+        try:
+            await ctx.bot.wait_for("reaction_add", check=pred, timeout=30)
+            await self._clear_react(ao3msg)
+
+            if pred.result is False:
+                await ao3msg.delete()
+                return
+
+        except asyncio.TimeoutError:
+            await self._clear_react(ao3msg)
+
+        autodel = await self.config.guild(ctx.guild).autodelete()
+ 
+        try:
+            if autodel is True:
+                await ctx.message.delete()
+            return
+        except:
+            return
+   
+
+
+    @commands.command(aliases=['formatao3'])
+    @commands.guild_only()
+    @checks.admin_or_permissions(administrator=True)
+    async def ao3format(self, ctx, *, formatstring):
+        """Customize your ao3 blurb's PLAIN TEXT format."""
+
+        oldformat = await self.config.guild(ctx.guild).formatting()
+
+        if "RESET" in formatstring:
+            formatstring = await self.config.guild(ctx.guild).defaultformat()
+            await ctx.send("Format has been reset to default.")
+
+        await self.config.guild(ctx.guild).formatting.set(formatstring)
+        await ctx.send("New format has been set.")
+        await ctx.send("```{}```".format(formatstring))
+        return
+
+    @commands.group(aliases=['helpformat'])
+    @commands.guild_only()
+    @checks.admin_or_permissions(administrator=True)
+    async def formathelp(self, ctx):
+        """Tutorial for formatting.
+        
+To reset to default formatting, use RESET. i.e. `[p]ao3format RESET`
+
+To specify the work info and format that you want to show on your server:
+`[p]ao3format <custom formatting>`
+
+You can use the following parameters for your ao3 info:
+```url, title, authors, rating, warnings, language, fandom, pairing, tags, summary, totalchapters, status, words, notes, reccer
+```
+
+To format the message with these parameters, include them in your message encased in curly braces {}
+You can also add whitespace (using Shift+Enter) as well as use Discord's native formatting.
+        
+For example:
+```[p]ao3format\n**{title}** by {authors}.\nPairing: {pairing}\nRating: {rating}\nTags: {tags}\n\nSummary: \n{summary}
+```
+Result:
+```**Title** by Author. \nPairing: Pairing(s) \nRating: Rating \nTags: Tag 1, Tag 2, Tag 3, Tag 4, Tag 5\n\nSummary:\nsummary
+```
+"""
+        pass
+
+    @formathelp.command(aliases=['c'])
+    async def current(self, ctx):
+        """See and preview your current formatting."""
+
+        currentformat = await self.config.guild(ctx.guild).formatting()
+        await ctx.send("Current formatting:```css\n{}```".format(currentformat))
+        preview = await ctx.send("Do you want to preview your ao3 work card with this format?")
+
+        start_adding_reactions(preview, ReactionPredicate.YES_OR_NO_EMOJIS)
+
+        pred = ReactionPredicate.yes_or_no(preview, ctx.author)
+        try:
+            await ctx.bot.wait_for("reaction_add", check=pred, timeout=30)
+
+            if pred.result is True:
+                await preview.delete()
+                params = {
+                    "title": "Title", 
+                    "authors": "Authors", 
+                    "rating": "Rating", 
+                    "warnings": "Warnings", 
+                    "language": "Language",
+                    "fandom": "Fandom", 
+                    "pairing": "Pairing", 
+                    "tags": "Tags", 
+                    "summary": "Summary",
+                    "totalchapters": "Chapters",
+                    "status": "Status", 
+                    "words": "Words", 
+                    "reccer" : "@/person",
+                    "notes": "Notes",
+                    "url": "<Link Here>",
+                }
+                previewmsg = await ctx.send(currentformat.format(**params))          
+
+            else:
+                await preview.delete()
+
+        except asyncio.TimeoutError:
+            await preview.delete()      
+
+        return
+
+    @formathelp.command(aliases=['d'])
+    async def default(self, ctx):
+        """See default bot formatting."""
+
+        defaultformat = await self.config.guild(ctx.guild).defaultformat()
+        await ctx.send("Default formatting:```css\n{}```".format(defaultformat))
+
+
+
+    @commands.group(aliases=['setao3'])
+    @commands.guild_only()
+    @checks.admin_or_permissions(administrator=True)
+    async def ao3set(self, ctx):
+        """Set how the Ao3 work info card is displayed in your guild."""
+        pass
+
+    @ao3set.command(aliases=['delete'])
+    async def autodelete(self, ctx):
+        """Toggle if the previous message auto deletes. Needs Manage Messages Permission."""
+        auto = await self.config.guild(ctx.guild).autodelete()
+        await self.config.guild(ctx.guild).autodelete.set(not auto)
+        return await ctx.send("Deletion of the original message has been set to **{}**.".format(not auto))
+
+    @ao3set.command(aliases=['censors', 'spoiler', 'spoilers'])
+    async def censor(self, ctx):
+        """Toggle the spoiler/censor of an Explicit work's tags."""
+        censors = await self.config.guild(ctx.guild).censor()
+        await self.config.guild(ctx.guild).censor.set(not censors)
+        return await ctx.send("Spoiler/censors of an Explicit fic's tags have been set to **{}**.".format(not censors))
+
+    @ao3set.command(aliases=['embed'])
+    async def embeds(self, ctx):
+        """Toggle using an embed or just plain text."""
+        toggle = await self.config.guild(ctx.guild).embed()
+        await self.config.guild(ctx.guild).embed.set(not toggle)
+        return await ctx.send("Embeds have been set to **{}**.".format(not toggle))
+
+    @ao3set.command(aliases=['tags', 'maxtags'])
+    async def tag(self, ctx, maxtags):
+        """Set a maximum limit for additional tags"""
+        try:
+            maxtags = int(maxtags)
+        except:
+            await ctx.send("Please use a number.")
+        if maxtags < 1:
+            await ctx.send("Please use a number greater than 1.")
+        else:
+            await self.config.guild(ctx.guild).taglimit.set(maxtags)
+            await ctx.send("Your new addtional tags limit is **{}**.".format(maxtags))
+        return
+
+    @ao3set.command(aliases=['pairing', 'pair', 'relationship', 'relationships', 'reltags', 'rel', 'maxpairtags'])
+    async def pairs(self, ctx, maxpairtags):
+        """Set a maximum limit for pairing/relationship tags"""
+        try:
+            maxpairtags = int(maxpairtags)
+        except:
+            await ctx.send("Please use a number.")
+        if maxpairtags < 1:
+            await ctx.send("Please use a number greater than 1.")
+        else:
+            await self.config.guild(ctx.guild).pairlimit.set(maxpairtags)
+            await ctx.send("Your new relationship tags limit is **{}**.".format(maxpairtags))
+        return
+
+    @ao3set.command(aliases=['fandoms', 'fandomtags', 'maxfandomtags'])
+    async def fandom(self, ctx, maxfandomtags):
+        """Set a maximum limit for fandom tags"""
+        try:
+            maxfandomtags = int(maxfandomtags)
+        except:
+            await ctx.send("Please use a number.")
+        if maxfandomtags < 1:
+            await ctx.send("Please use a number greater than 1.")
+        else:
+            await self.config.guild(ctx.guild).fandomlimit.set(maxfandomtags)
+            await ctx.send("Your new fandom tags limit is **{}**.".format(maxfandomtags))
+        return
+
+
+    @staticmethod
+    async def _clear_react(msg):
+        try:
+            await msg.clear_reactions()
+            return
+        except discord.errors.Forbidden:
+            pass
+
+    def cog_unload(self):
+        self.bot.loop.create_task(self.session.close())

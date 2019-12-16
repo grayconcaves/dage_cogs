@@ -1,0 +1,10 @@
+{
+    "author" : "tagape#3232 (V3 port of V2 Cog by 3D-Cogs",
+    "install_msg" : "Thank you for installing my ao3 module. Type `[p]help Ao3` for more information.",
+    "name" : "Ao3",
+    "short" : "Use an ao3 link to get its story details!",
+    "description" : "Port of 3D-Cogs V2 Ao3 Cog. Pulls Ao3 data and makes it readable for Discord. \n Use [p]ao3 <link> to open the story info card.",
+    "disabled" : false,
+    "tags" : ["ao3"],
+    "min_python_version": [3, 6, 0]
+}
