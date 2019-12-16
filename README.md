@@ -3,7 +3,7 @@ Cogs made by **grayconcaves** for [Red-DiscordBot](https://github.com/Cog-Creato
 
 To add this repo to your bot: `[p]repo add dagecogs https://github.com/grayconcaves/dage_cogs/` 
 
-This repository contains a few test cogs I've made for my Red V3 bot, Super Dage. I hope this will be of help for you too!
+This repository contains a few test cogs I've made for my Red V3 bot, **Super Dage**. I hope this will be of help for you too!
 
 ## Cogs
 
