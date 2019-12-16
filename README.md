@@ -10,5 +10,5 @@ This repository contains a few test cogs I've made for my Red V3 bot, Super Dage
 | Name | Description |
 | --- | --- |
 | Ao3 | Takes an ao3 link and compiles its info into a message
-
+| shibe | Shows a random picture of a shiba inu
 
