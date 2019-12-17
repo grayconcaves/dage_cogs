@@ -48,11 +48,11 @@ class Ao3(BaseCog):
         if "chapter" in ficlink:
             newlink = ficlink.split("chapters")[0]
             ficlink = str(newlink)
-        firstchap = "{}/navigate".format(ficlink)
+        firstchap = f"{ficlink}/navigate"
         async with self.session.get(firstchap) as ao3navigation:
             navigate = BeautifulSoup(await ao3navigation.text(), 'html.parser', parse_only=SoupStrainer("ol"))
         firstchap = navigate.find("li").a['href']
-        url = "https://archiveofourown.org{}?view_adult=true".format(firstchap)
+        url = f"https://archiveofourown.org{firstchap}?view_adult=true"
 
         #START SCRAPING
         async with self.session.get(url) as ao3session:
@@ -125,8 +125,8 @@ class Ao3(BaseCog):
             div = result.find("div", {'class': 'preface group'})
             userstuff = div.find("blockquote", {'class': 'userstuff'})
             stuff = str(BeautifulSoup.getText(userstuff))
-            summarytest = "{}".format(stuff).replace('. ', '**').replace('.', '. ')
-            summary = "{}".format(summarytest).replace('**', '. \n\n')
+            summarytest = f"{stuff}".replace('. ', '**').replace('.', '. ')
+            summary = f"{summarytest}".replace('**', '. \n\n')
         except:
             summary = "No work summary found." 
 
@@ -139,7 +139,7 @@ class Ao3(BaseCog):
             for tag in freeform.find_all("li", limit=taglimit):
                 tag_list.append(tag.a.string)
             if "Explicit" in rating and use_censor:
-                tags = "||{}||".format(humanize_list(tag_list))
+                tags = f"||{(humanize_list(tag_list))}||"
             else:
                 tags = humanize_list(tag_list)
 
@@ -173,8 +173,8 @@ class Ao3(BaseCog):
             data.add_field(name="Rating:", value=rating, inline=False)
             data.add_field(name="Pairings:", value=pairing, inline=False)
             data.add_field(name="Tags:", value=tags, inline=False)
-            data.add_field(name="Rec Notes by {}: ".format(ctx.author), value=notes, inline=False)
-            data.set_footer(text="Language: {}     |       Words: {}       |       Status: {}        ".format(language, words, status))
+            data.add_field(name= f"Rec Notes by {ctx.author}: ", value=notes, inline=False)
+            data.set_footer(text= f"Language: {language}     |       Words: {words}       |       Status: {status}        ")
             ao3msg = await ctx.send(embed=data)
 
         else:
@@ -193,7 +193,7 @@ class Ao3(BaseCog):
                 "words": words, 
                 "reccer" : ctx.author.mention,
                 "notes": notes,
-                "url": "<{}>".format(ficlink),
+                "url": f"<{ficlink}>"
             }
             ao3msg = await ctx.send(data.format(**params))
 
@@ -236,7 +236,7 @@ class Ao3(BaseCog):
 
         await self.config.guild(ctx.guild).formatting.set(formatstring)
         await ctx.send("New format has been set.")
-        await ctx.send("```{}```".format(formatstring))
+        await ctx.send(f"```{formatstring}```")
         return
 
     @commands.group(aliases=['helpformat'])
@@ -246,14 +246,11 @@ class Ao3(BaseCog):
         """Tutorial for formatting.
         
 To reset to default formatting, use RESET. i.e. `[p]ao3format RESET`
-
 To specify the work info and format that you want to show on your server:
 `[p]ao3format <custom formatting>`
-
 You can use the following parameters for your ao3 info:
 ```url, title, authors, rating, warnings, language, fandom, pairing, tags, summary, totalchapters, status, words, notes, reccer
 ```
-
 To format the message with these parameters, include them in your message encased in curly braces {}
 You can also add whitespace (using Shift+Enter) as well as use Discord's native formatting.
         
@@ -270,8 +267,9 @@ Result:
     async def current(self, ctx):
         """See and preview your current formatting."""
 
+
         currentformat = await self.config.guild(ctx.guild).formatting()
-        await ctx.send("Current formatting:```css\n{}```".format(currentformat))
+        await ctx.send(f"Current formatting:```css\n{currentformat}```")
         preview = await ctx.send("Do you want to preview your ao3 work card with this format?")
 
         start_adding_reactions(preview, ReactionPredicate.YES_OR_NO_EMOJIS)
@@ -314,7 +312,7 @@ Result:
         """See default bot formatting."""
 
         defaultformat = await self.config.guild(ctx.guild).defaultformat()
-        await ctx.send("Default formatting:```css\n{}```".format(defaultformat))
+        await ctx.send(f"Default formatting:```css\n{defaultformat}```")
 
 
 
@@ -330,21 +328,21 @@ Result:
         """Toggle if the previous message auto deletes. Needs Manage Messages Permission."""
         auto = await self.config.guild(ctx.guild).autodelete()
         await self.config.guild(ctx.guild).autodelete.set(not auto)
-        return await ctx.send("Deletion of the original message has been set to **{}**.".format(not auto))
+        return await ctx.send(f"Deletion of the original message has been set to **{not auto}**.")
 
     @ao3set.command(aliases=['censors', 'spoiler', 'spoilers'])
     async def censor(self, ctx):
         """Toggle the spoiler/censor of an Explicit work's tags."""
         censors = await self.config.guild(ctx.guild).censor()
         await self.config.guild(ctx.guild).censor.set(not censors)
-        return await ctx.send("Spoiler/censors of an Explicit fic's tags have been set to **{}**.".format(not censors))
+        return await ctx.send(f"Spoiler/censors of an Explicit fic's tags have been set to **{not censors}**.")
 
     @ao3set.command(aliases=['embed'])
     async def embeds(self, ctx):
         """Toggle using an embed or just plain text."""
         toggle = await self.config.guild(ctx.guild).embed()
         await self.config.guild(ctx.guild).embed.set(not toggle)
-        return await ctx.send("Embeds have been set to **{}**.".format(not toggle))
+        return await ctx.send(f"Embeds have been set to **{not toggle}**.")
 
     @ao3set.command(aliases=['tags', 'maxtags'])
     async def tag(self, ctx, maxtags):
@@ -357,7 +355,7 @@ Result:
             await ctx.send("Please use a number greater than 1.")
         else:
             await self.config.guild(ctx.guild).taglimit.set(maxtags)
-            await ctx.send("Your new addtional tags limit is **{}**.".format(maxtags))
+            await ctx.send(f"Your new addtional tags limit is **{maxtags}**.")
         return
 
     @ao3set.command(aliases=['pairing', 'pair', 'relationship', 'relationships', 'reltags', 'rel', 'maxpairtags'])
@@ -371,7 +369,7 @@ Result:
             await ctx.send("Please use a number greater than 1.")
         else:
             await self.config.guild(ctx.guild).pairlimit.set(maxpairtags)
-            await ctx.send("Your new relationship tags limit is **{}**.".format(maxpairtags))
+            await ctx.send(f"Your new relationship tags limit is **{maxpairtags}**.")
         return
 
     @ao3set.command(aliases=['fandoms', 'fandomtags', 'maxfandomtags'])
@@ -385,7 +383,7 @@ Result:
             await ctx.send("Please use a number greater than 1.")
         else:
             await self.config.guild(ctx.guild).fandomlimit.set(maxfandomtags)
-            await ctx.send("Your new fandom tags limit is **{}**.".format(maxfandomtags))
+            await ctx.send(f"Your new fandom tags limit is **{maxfandomtags}**.")
         return
 
 
