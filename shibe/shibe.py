@@ -9,9 +9,7 @@ from redbot.core import commands
 # Libs
 import aiohttp
 
-BaseCog = getattr(commands, "Cog", object)
-
-class Shibe(BaseCog):
+class Shibe(commands.cog):
     """Get you a Shibe!"""
 
     def __init__(self, bot):
