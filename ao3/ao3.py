@@ -15,9 +15,7 @@ import asyncio
 import aiohttp
 from bs4 import BeautifulSoup, SoupStrainer
 
-BaseCog = getattr(commands, "Cog", object)
-
-class Ao3(BaseCog):
+class Ao3(commands.Cog):
     """Ao3 commands"""
 
     def __init__(self, bot):
