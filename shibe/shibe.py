@@ -10,9 +10,9 @@ from redbot.core import commands
 import aiohttp
 
 class Shibe(commands.Cog):
-    """Get you a Shibe!"""
+    """Shibe commands"""
 
-     def __init__(self, bot):
+    def __init__(self, bot):
         self.bot = bot
         self.session = aiohttp.ClientSession()
         self.shibapi = "http://shibe.online/api/shibes?count=1"
