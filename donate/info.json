@@ -1,0 +1,10 @@
+{
+    "author" : "tagape#3232",
+    "install_msg" : "Thank you for installing my donate module. Type `[p]help donate` for more information.",
+    "name" : "donate",
+    "short" : "Donate link for Super Dage's hosting!",
+    "description" : "Includes the donate link for people who want to access it.",
+    "disabled" : false,
+    "tags" : ["ao3"],
+    "min_python_version": [3, 6, 0]
+}

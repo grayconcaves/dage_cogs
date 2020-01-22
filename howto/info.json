@@ -1,0 +1,10 @@
+{
+    "author" : "tagape#3232",
+    "install_msg" : "Thank you for installing my FAQ module. Type `[p]help Howto` for more information.",
+    "name" : "Howto",
+    "short" : "See DaGe's FAQ / 'How To Use DaGe' Slides!",
+    "description" : "Use this cog to see Dage's FAQ / 'How To Use DaGe' Slides",
+    "disabled" : false,
+    "tags" : ["howto"],
+    "min_python_version": [3, 6, 0]
+}

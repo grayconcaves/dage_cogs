@@ -1,0 +1,10 @@
+{
+    "author" : "tagape#3232",
+    "install_msg" : "Thank you for installing my sprint module. Type `[p]help sprint` for more information.",
+    "name" : "sprint",
+    "short" : "Writing sprint cog.",
+    "description" : "Writing sprint cog, perfect for writing/book club servers!",
+    "disabled" : false,
+    "tags" : ["sprint"],
+    "min_python_version": [3, 6, 0]
+}
