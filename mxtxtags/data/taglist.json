@@ -1,0 +1,104 @@
+{
+	"lwj": "Lán Zhàn | Lán Wàngjī",
+	"wwx": "Wèi Yīng | Wèi Wúxiàn",
+	"wangxian": "Lán Zhàn | Lán Wàngjī/Wèi Yīng | Wèi Wúxiàn",
+	"lbh": "Luò Bīnghé",
+	"sqq": "Shěn Yuán | Shěn Qīngqiū",
+	"bingqiu": "Luò Bīnghé/Shěn Yuán | Shěn Qīngqiū",
+	"hc": "Huā Chéng",
+	"xl": "Xiè Lián",
+	"hualian": "Huā Chéng/Xiè Lián",
+
+	"jc":"Jiāng Chéng | Jiāng Wǎnyín",
+	"jyl":"Jiāng Yànlí",
+	"jfm":"Jiāng Fēngmián",
+	"yzy":"Yú Zǐyuān",
+
+	"jl":"Jīn Líng | Jīn Rúlán",
+	"jzx":"Jīn Zixuān",
+	"jgy":" Mèng Yáo | Jīn Guāngyáo",
+	"jgs":"Jīn Guāngshàn",
+	"jzxun":"Jīn Zixūn",
+	"mxy":"Mò Xuányǔ",
+	"qs":"Qín Sù",
+
+	"lxc":"Lán Huàn | Lán Xīchén",
+	"lqr":"Lán Qǐrén",
+	"qhj":"Qīnghéng-jūn",
+	"lsz":"Lán Yuàn | Lán Sīzhuī",
+	"ljy":"Lán Jǐngyí",
+	"sushe":"Sū Shè | Sū Mǐnshàn",
+
+	"nhs":"Niè Huáisāng",
+	"nmj":"Niè Míngjué",
+
+	"wc":"Wēn Cháo",
+	"wx":"Wēn Xù",
+	"wq":"Wēn Qíng",
+	"wn":"Wēn Níng | Wēn Qiónglín",
+	"wlj":"Wáng Língjiāo",
+	"wzl":"Wēn Zhúliú",
+
+	"xxc":"Xiǎo Xīngchén",
+	"sl":"Sòng Lán | Sòng Zǐchēn",
+	"xy":"Xuē Yáng | Xuē Chéngměi",
+	"aqing":"Ā-Qìng",
+
+	"ozz":"Ōuyáng Zizhēn",
+	"bssr":"Bàoshān Sǎnrén",
+	"cssr":"Cángsè Sànrén",
+	"wcz":"Wèi Chǎngzé",
+	"mianmian":"Luó Qīngyáng",
+
+	"xicheng":"Jiāng Chéng | Jiāng Wǎnyín/Lán Huàn | Lán Xīchén",
+	"chengxian":"Jiāng Chéng | Jiāng Wǎnyín/Wèi Yīng | Wèi Wúxiàn",
+	"mingcheng":"Jiāng Chéng | Jiāng Wǎnyín/Niè Míngjué",
+	"chengyao":"Jiāng Chéng | Jiāng Wǎnyín/Mèng Yáo | Jīn Guāngyáo",
+	"chengzhan":"Jiāng Chéng | Jiāng Wǎnyín/Lán Zhàn | Lán Wàngjī",
+	"zhancheng":"Jiāng Chéng | Jiāng Wǎnyín/Lán Zhàn | Lán Wàngjī",
+	"chengning":"Jiāng Chéng | Jiāng Wǎnyín/Wēn Níng | Wēn Qiónglín",
+	"ningcheng":"Jiāng Chéng | Jiāng Wǎnyín/Wēn Níng | Wēn Qiónglín",
+	"chengyi":"Jiāng Chéng | Jiāng Wǎnyín/Lán Jǐngyí",
+	"sangcheng":"Jiāng Chéng | Jiāng Wǎnyín/Niè Huáisāng",
+
+	"xuanli":"Jiāng Yànlí/Jīn Zixuān",
+
+	"xiyao":"Lán Huàn | Lán Xīchén/Mèng Yáo | Jīn Guāngyáo",
+	"nielan":"Lán Huàn | Lán Xīchén/Niè Míngjué",
+	"3zun":"Lán Huàn | Lán Xīchén/Mèng Yáo | Jīn Guāngyáo/Niè Míngjué",
+	"nieyao":"Mèng Yáo | Jīn Guāngyáo/Niè Míngjué",
+	"sangyao":"Mèng Yáo | Jīn Guāngyáo/Niè Huáisāng",
+
+	"niecest":"Niè Huáisāng/Niè Míngjué",
+
+
+
+
+	"sj":"Original Shěn Qīngqiū",
+	"yqy":"Yuè Qīngyuán",
+	"lqg":"Liǔ Qīnggē",
+	"lmy":"Liǔ Míngyān",
+	"mf":"Míng Fān",
+	"nyy":"Níng Yīngyīng",
+	"sqh":"Shàng Qīnghuá",
+	"mqf":"Mù Qīngfāng",
+	"qqq":"Qí Qīngqī",
+
+	"gyx":"Gōngyí Xiāo",
+	"sxy":"Sū Xīyán",
+	"hhpm":"Lǎo Gōngzhǔ | Old Palace Master",
+
+	"mbj":"Mò Běijūn",
+	"shl":"Shā Huálíng",
+	"zzl":"Zhúzhī-láng",
+	"tlj":"Tiānláng-jūn",
+	"lgj":"Lǐnguāng-jūn",
+	"bingge":"Original Luò Bīnghé",
+
+	"79":"Original Shěn Qīngqiū/Yuè Qīngyuán",
+	"qijiu":"Original Shěn Qīngqiū/Yuè Qīngyuán",
+	"bingjiu":"Original Luò Bīnghé/Original Shěn Qīngqiū",
+	"liushen":"Liǔ Qīnggē/Shěn Yuán | Shěn Qīngqiū",
+	"moshang":"Mò Běijūn/Shàng Qīnghuá"
+
+}

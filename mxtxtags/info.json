@@ -1,0 +1,10 @@
+{
+    "author" : "tagape#3232",
+    "install_msg" : "Thank you for installing my MXTXTags cog. Type `[p]help Mxtxtags` for more information.",
+    "name" : "Mxtxtags",
+    "short" : "Convert common fandom nicknames to Ao3 marked pinyin",
+    "description" : "This cog will convert common fandom nicknames for MXTX characters into Ao3's format, which you can then easily paste into Ao3's Character or Relationship tags boxes.",
+    "disabled" : false,
+    "tags" : ["mxtxtags"],
+    "min_python_version": [3, 8, 0]
+}
