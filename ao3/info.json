@@ -6,5 +6,5 @@
     "description" : "Port of 3D-Cogs V2 Ao3 Cog. Pulls Ao3 data and makes it readable for Discord. \n Use [p]ao3 <link> to open the story info card.",
     "disabled" : false,
     "tags" : ["ao3"],
-    "min_python_version": [3, 6, 0]
+    "min_python_version": [3, 8, 0]
 }
