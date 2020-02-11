@@ -6,5 +6,5 @@
     "description" : "Includes the donate link for people who want to access it.",
     "disabled" : false,
     "tags" : ["ao3"],
-    "min_python_version": [3, 6, 0]
+    "min_python_version": [3, 8, 0]
 }
