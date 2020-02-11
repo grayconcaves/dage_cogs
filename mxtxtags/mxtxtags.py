@@ -18,7 +18,7 @@ class Mxtxtags(commands.Cog):
         self.config = Config.get_conf(self, identifier=79797979795641, force_registration=True)
         
         tag_fp = bundled_data_path(self) / "taglist.json"
-        with tag_fp.open("r") as tagses:
+        with tag_fp.open("r", encoding='latin1') as tagses:
             self.TAGLIST = json.load(tagses)
 
     @commands.command(aliases=['mxtxtags','tag', 'cntag'])
