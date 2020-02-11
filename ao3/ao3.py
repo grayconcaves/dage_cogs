@@ -29,6 +29,7 @@ class Ao3(commands.Cog):
             pairlimit = 3,
             taglimit = 5,
             fandomlimit = 1,
+            noteslimit = 500,
             defaultformat = "**{title}** by **{authors}**\n{url}\n**Fandoms:** {fandom}\n**Rating:** {rating}     **Warnings:** {warnings}\n**Relationships:** {pairing}\n**Tags:** {tags}\n**Summary:** {summary}**Words:** {words}     **Chapters:** {totalchapters}\n**Notes by {reccer}**: {notes}",
             formatting = "Title: **__{title}__**\nAuthor: {authors}\nFandom: {fandom}\nPairing: {pairing}\nRating: {rating}\nWarning: {warnings}\n\nSummary: {summary}\nTags: {tags}\nChapters: {totalchapters}\n\nRecced by {reccer} {notes} \nRead it here: {url}"         
         )
@@ -41,6 +42,9 @@ class Ao3(commands.Cog):
         #SET NOTES
         if notes is "":
             notes = "None."
+        else:
+            nlimit = await self.config.guild(ctx.guild).noteslimit()
+            notes = notes[:nlimit]
         
         #GET URL
         if "chapter" in ficlink:
@@ -382,6 +386,16 @@ Result:
         else:
             await self.config.guild(ctx.guild).fandomlimit.set(maxfandomtags)
             await ctx.send(f"Your new fandom tags limit is **{maxfandomtags}**.")
+        return
+
+    @ao3set.command(aliases=['note'])
+    async def notes(self, ctx, notelimit: int):
+        """Set a maximum limit for user notes."""
+        if notelimit < 0 or notelimit > 2000:
+            await ctx.send("Please use a positive number less than 200")
+        else:
+            await self.config.guild(ctx.guild).noteslimit.set(notelimit)
+            await ctx.send(f"You new notes character limit is **{notelimit}**")
         return
 
 
