@@ -6,5 +6,5 @@
     "description" : "Dedicated to my shiba loving friend <3 Use `[p]shibe` to get a random shiba picture!",
     "disabled" : false,
     "tags" : ["shiba"],
-    "min_python_version": [3, 6, 0]
+    "min_python_version": [3, 8, 0]
 }
