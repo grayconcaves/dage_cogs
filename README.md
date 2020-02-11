@@ -12,6 +12,6 @@ This repository contains a few test cogs I've made for my Red V3 bot, **Super Da
 | Ao3 | Takes an ao3 link and compiles its info into a message
 | shibe | Shows a random picture of a shiba inu
 | donate | Donate to Dage's hosting expenses!
-| interview | Interview cog for We're Old and Tired
 | howto | Shows a link to a more detailed help for Dage's commands
+| Mxtxtags | Convert common MXTX fandom nicknames to Ao3 marked pinyin
 
