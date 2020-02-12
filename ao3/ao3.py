@@ -251,16 +251,19 @@ To reset to default formatting, use RESET. i.e. `[p]ao3format RESET`
 To specify the work info and format that you want to show on your server:
 `[p]ao3format <custom formatting>`
 You can use the following parameters for your ao3 info:
-```url, title, authors, rating, warnings, language, fandom, pairing, tags, summary, totalchapters, status, words, notes, reccer
+```css
+url, title, authors, rating, warnings, language, fandom, pairing, tags, summary, totalchapters, status, words, notes, reccer
 ```
 To format the message with these parameters, include them in your message encased in curly braces {}
 You can also add whitespace (using Shift+Enter) as well as use Discord's native formatting.
         
 For example:
-```[p]ao3format\n**{title}** by {authors}.\nPairing: {pairing}\nRating: {rating}\nTags: {tags}\n\nSummary: \n{summary}
+```css
+[p]ao3format\n**{title}** by {authors}.\nPairing: {pairing}\nRating: {rating}\nTags: {tags}\n\nSummary: \n{summary}
 ```
 Result:
-```**Title** by Author. \nPairing: Pairing(s) \nRating: Rating \nTags: Tag 1, Tag 2, Tag 3, Tag 4, Tag 5\n\nSummary:\nsummary
+```css
+**Title** by Author. \nPairing: Pairing(s) \nRating: Rating \nTags: Tag 1, Tag 2, Tag 3, Tag 4, Tag 5\n\nSummary:\nsummary
 ```
 """
         pass
