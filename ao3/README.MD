@@ -66,11 +66,15 @@ summary
 To see your current formatting: `[p]formathelp current`
 To see the default formatting: `[p]formathelp default`
 
-## Additional Notes
+## Automating Ao3
 
 To emulate the **Fanfic Rec Bot**, I recommend using this with Trusty-cogs [**retrigger**](https://github.com/TrustyJAID/Trusty-cogs/tree/master/retrigger) for it to automatically detect if an ao3 link has been used.
-`[p]retrigger command ao3 /archiveofourown.org/ ao3 {message.content}`
+
+`[p]retrigger command ao3 (?:(?=https://archiveofourown))(.*) ao3 {1}`
 
 Then you can restrict the channels where it does this automatically.
+
 `[p]retrigger whitelist add ao3 <#channel>`
+
+__Note:__ Please remember that this will work even if words were used before the link. However, you still need to put any reccer's notes **after the link** for them to be detected. Any words before the link will not be detected by the cog.
 
