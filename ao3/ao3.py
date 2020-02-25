@@ -408,7 +408,7 @@ Result:
             await ctx.send("Please use a positive number less than 1500")
         else:
             await self.config.guild(ctx.guild).sumlimit.set(summarylimit)
-            await ctx.send(f"You new notes character limit is **{sumlimit}**")
+            await ctx.send(f"You new notes character limit is **{summarylimit}**")
         return
 
 
