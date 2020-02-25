@@ -30,6 +30,7 @@ class Ao3(commands.Cog):
             taglimit = 5,
             fandomlimit = 1,
             noteslimit = 500,
+            sumlimit = 1500,
             defaultformat = "**{title}** by **{authors}**\n{url}\n**Fandoms:** {fandom}\n**Rating:** {rating}     **Warnings:** {warnings}\n**Relationships:** {pairing}\n**Tags:** {tags}\n**Summary:** {summary}**Words:** {words}     **Chapters:** {totalchapters}\n**Notes by {reccer}**: {notes}",
             formatting = "Title: **__{title}__**\nAuthor: {authors}\nFandom: {fandom}\nPairing: {pairing}\nRating: {rating}\nWarning: {warnings}\n\nSummary: {summary}\nTags: {tags}\nChapters: {totalchapters}\n\nRecced by {reccer} {notes} \nRead it here: {url}"         
         )
@@ -128,7 +129,9 @@ class Ao3(commands.Cog):
             userstuff = div.find("blockquote", {'class': 'userstuff'})
             stuff = str(BeautifulSoup.getText(userstuff))
             summarytest = f"{stuff}".replace('. ', '**').replace('.', '. ')
-            summary = f"{summarytest}".replace('**', '. \n\n')
+            summ = f"{summarytest}".replace('**', '. \n\n')
+            slimit = await self.config.guild(ctx.guild).sumlimit()
+            summary = summ[:slimit]
         except:
             summary = "No work summary found." 
 
@@ -391,11 +394,21 @@ Result:
     @ao3set.command(aliases=['note'])
     async def notes(self, ctx, notelimit: int):
         """Set a maximum limit for user notes."""
-        if notelimit < 0 or notelimit > 2000:
-            await ctx.send("Please use a positive number less than 200")
+        if notelimit < 0 or notelimit > 500:
+            await ctx.send("Please use a positive number less than 500")
         else:
             await self.config.guild(ctx.guild).noteslimit.set(notelimit)
             await ctx.send(f"You new notes character limit is **{notelimit}**")
+        return
+
+    @ao3set.command(aliases=['sum'])
+    async def summary(self, ctx, summarylimit: int):
+        """Set a maximum limit for fic summaries."""
+        if summarylimit < 0 or summarylimit > 1500:
+            await ctx.send("Please use a positive number less than 1500")
+        else:
+            await self.config.guild(ctx.guild).sumlimit.set(summarylimit)
+            await ctx.send(f"You new notes character limit is **{sumlimit}**")
         return
 
 
