@@ -40,7 +40,7 @@ class Promptgen(commands.Cog):
         e.g. `[p]prompt nsfw`
 
         To include Extreme NSFW prompts, add the 'extreme' flag.
-        e.g. `[p]prompt exreme`
+        e.g. `[p]prompt extreme`
         """
         if flag != " ":
         	if flag == "extreme":
