@@ -56,7 +56,7 @@ class Promptgen(commands.Cog):
         trope = self.TROPELIST[random.randint(0,21)]
         universe = self.UNIVERSELIST[random.randint(0,28)]
 
-        msg = f"Universe: __{universe}__ AU\nTrope: __{trope}__\n__{kink}__"
+        msg = f"Universe: {universe} AU\nTrope: {trope}\n{kink}"
 
         await ctx.send(msg)
 
