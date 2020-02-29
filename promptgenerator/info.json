@@ -1,0 +1,10 @@
+{
+    "author" : "tagape#3232",
+    "install_msg" : "Thank you for installing my Prompt Generator cog. Type `[p]help promptgen` for more information.",
+    "name" : "Promptgen",
+    "short" : "Get a random writing/art prompt!",
+    "description" : "Generate a random prompt to get those creative juices going!",
+    "disabled" : false,
+    "tags" : ["promptgen"],
+    "min_python_version": [3, 8, 0]
+}
