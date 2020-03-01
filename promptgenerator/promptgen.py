@@ -46,6 +46,9 @@ class Promptgen(commands.Cog):
     async def prompt(self, ctx, numtropes = 1, flag = " ", numkinks = 1):
         """Generate a romance prompt.
 
+        To generate a normal prompt (Universe, Challenge, Bonus), use the command without any arguments.
+        e.g. `[p]prompt`
+        
         To specify the number of tropes (challenges), just include a number. MAX: 5
         e.g. `[p]prompt 2`
 
