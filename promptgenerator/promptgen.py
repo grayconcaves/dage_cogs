@@ -50,10 +50,10 @@ class Promptgen(commands.Cog):
         e.g. `[p]prompt 2`
 
         To include NSFW kinks, add the 'nsfw' flag.
-        e.g. `[p]prompt nsfw`
+        e.g. `[p]prompt 2 nsfw`
 
         To include Extreme NSFW prompts, add the 'extreme' flag.
-        e.g. `[p]prompt extreme`
+        e.g. `[p]prompt 2 extreme`
 
         To specify the number of kinks, just include a number AFTER the flag. MAX: 5
         e.g. `[p]prompt 2 extreme 2`
