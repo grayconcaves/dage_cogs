@@ -1,5 +1,7 @@
 {
-    "author" : "tagape#3232",
+    "author" : [
+        "Chris/Gai"
+    ],
     "install_msg" : "Thank you for installing my donate module. Type `[p]help donate` for more information.",
     "name" : "donate",
     "short" : "Donate link for Super Dage's hosting!",
