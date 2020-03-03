@@ -1,5 +1,7 @@
 {
-    "author" : "tagape#3232",
+    "author" : [
+        "Chris/Gai"
+    ],
     "install_msg" : "Thank you for installing my FAQ module. Type `[p]help Howto` for more information.",
     "name" : "Howto",
     "short" : "See DaGe's FAQ / 'How To Use DaGe' Slides!",
