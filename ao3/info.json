@@ -1,5 +1,7 @@
 {
-    "author" : "tagape#3232 (V3 port of V2 Cog by 3D-Cogs",
+    "author" : [
+        "Chris/Gai"
+    ],
     "install_msg" : "Thank you for installing! Type `[p]help Ao3` for more information. \nFor more help, check out my README: https://github.com/grayconcaves/dage_cogs/blob/master/ao3/README.MD.",
     "name" : "Ao3",
     "short" : "Use an ao3 link to get its story details!",
