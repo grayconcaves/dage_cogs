@@ -1,5 +1,7 @@
 {
-    "author" : "tagape#3232",
+    "author" : [
+        "Chris/Gai"
+    ],
     "install_msg" : "Thank you for installing my sprint module. Type `[p]help sprint` for more information.",
     "name" : "sprint",
     "short" : "Writing sprint cog.",
