@@ -1,5 +1,7 @@
 {
-    "author" : "tagape#3232",
+    "author" : [
+        "Chris/Gai"
+    ],
     "install_msg" : "Thank you for installing my Prompt Generator cog. Type `[p]help promptgen` for more information.",
     "name" : "Promptgen",
     "short" : "Get a random writing/art prompt!",
