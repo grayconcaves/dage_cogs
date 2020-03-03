@@ -1,5 +1,7 @@
 {
-    "author" : "tagape#3232",
+    "author" : [
+        "Chris/Gai"
+    ],
     "install_msg" : "Thank you for installing my MXTXTags cog. Type `[p]help Mxtxtags` for more information.",
     "name" : "Mxtxtags",
     "short" : "Convert common fandom nicknames to Ao3 marked pinyin",
