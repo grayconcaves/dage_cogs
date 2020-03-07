@@ -58,13 +58,13 @@ To limit to a fandom, just add ONLY one of the fandom flags: `mdzs` | `sv` | `tg
         	return await ctx.send("Please input a valid number from 1 to 5")
 
         if fandom == "all":
-        	pairs = random.choices(list(self.TAGLIST.values())[0:84], k=numpairs)
+        	pairs = random.choices(list(self.TAGLIST.values())[0:82], k=numpairs)
         elif fandom == "mdzs":
-        	pairs = random.choices(list(self.TAGLIST.values())[0:37], k=numpairs)
+        	pairs = random.choices(list(self.TAGLIST.values())[0:35], k=numpairs)
         elif fandom == "sv":
-        	pairs = random.choices(list(self.TAGLIST.values())[38:58], k=numpairs)
+        	pairs = random.choices(list(self.TAGLIST.values())[36:56], k=numpairs)
         elif fandom == "tgcf":
-        	pairs = random.choices(list(self.TAGLIST.values())[59:84], k=numpairs)
+        	pairs = random.choices(list(self.TAGLIST.values())[57:82], k=numpairs)
         else:
         	return await ctx.send("Please input a valid fandom.")
 
@@ -85,13 +85,13 @@ To limit to a fandom, just add ONLY one of the fandom flags: `mdzs` | `sv` | `tg
         	return await ctx.send("Please input a valid number from 1 to 5")
 
         if fandom == "all":
-        	chars = random.sample(list(self.TAGLIST.values())[0:84], k=numchars)
+        	chars = random.sample(list(self.TAGLIST.values())[0:82], k=numchars)
         elif fandom == "mdzs":
-        	chars = random.sample(list(self.TAGLIST.values())[0:37], k=numchars)
+        	chars = random.sample(list(self.TAGLIST.values())[0:35], k=numchars)
         elif fandom == "sv":
-        	chars = random.sample(list(self.TAGLIST.values())[38:58], k=numchars)
+        	chars = random.sample(list(self.TAGLIST.values())[36:56], k=numchars)
         elif fandom == "tgcf":
-        	chars = random.sample(list(self.TAGLIST.values())[59:84], k=numchars)
+        	chars = random.sample(list(self.TAGLIST.values())[57:82], k=numchars)
         else:
         	return await ctx.send("Please input a valid fandom.")
 
