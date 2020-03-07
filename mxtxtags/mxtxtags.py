@@ -41,6 +41,60 @@ will return
             ao3list.append(self.TAGLIST.get(tag, tag))
         await ctx.send(''.join(ao3list))
         return
+    
+    @commands.command(aliases=['pairgen','mxtxpair'])
+    async def pairgenerator(self, ctx, fandom:str = "all", numpairs:int = 2):
+        """Generate a random MXTX pairing! 
+
+To generate less or more a pair, just include a number from 1 to 5. 
+
+To limit to a fandom, just add ONLY one of the fandom flags: `mdzs` | `sv` | `tgcf` | `all`
+
+        """
+
+        if numpairs > 5 or numpairs < 1:
+        	return await ctx.send("Please input a valid number from 1 to 5")
+
+        if fandom == "all":
+        	pairs = random.choices(list(self.TAGLIST.values())[0:84], k=numpairs)
+        elif fandom == "mdzs":
+        	pairs = random.choices(list(self.TAGLIST.values())[0:37], k=numpairs)
+        elif fandom == "sv":
+        	pairs = random.choices(list(self.TAGLIST.values())[38:58], k=numpairs)
+        elif fandom == "tgcf":
+        	pairs = random.choices(list(self.TAGLIST.values())[59:84], k=numpairs)
+        else:
+        	return await ctx.send("Please input a valid fandom.")
+
+        await ctx.send('/'.join(pairs))
+        return
+
+    @commands.command(aliases=['chargen','mxtxchar'])
+    async def chargenerator(self, ctx, fandom:str = "all", numchars:int = 1):
+        """Generate a random MXTX character! 
+
+You can generate at most 5 characters. 
+
+To limit to a fandom, just add ONLY one of the fandom flags: `mdzs` | `sv` | `tgcf` | `all`
+
+        """
+
+        if numchars > 5 or numchars < 1:
+        	return await ctx.send("Please input a valid number from 1 to 5")
+
+        if fandom == "all":
+        	chars = random.sample(list(self.TAGLIST.values())[0:84], k=numchars)
+        elif fandom == "mdzs":
+        	chars = random.sample(list(self.TAGLIST.values())[0:37], k=numchars)
+        elif fandom == "sv":
+        	chars = random.sample(list(self.TAGLIST.values())[38:58], k=numchars)
+        elif fandom == "tgcf":
+        	chars = random.sample(list(self.TAGLIST.values())[59:84], k=numchars)
+        else:
+        	return await ctx.send("Please input a valid fandom.")
+
+        await ctx.send(humanize_list(chars))
+        return
 
 
 
