@@ -30,8 +30,6 @@
 	"sl":"Sòng Lán | Sòng Zǐchēn",
 	"xy":"Xuē Yáng | Xuē Chéngměi",
 	"aqing":"Ā-Qìng",
-	"xuexiao":"Xiǎo Xīngchén/Xuē Yáng | Xuē Chéngměi",
-	"songxiao":"Sòng Lán | Sòng Zǐchēn/Xiǎo Xīngchén",
 	"ozz":"Ōuyáng Zizhēn",
 	"bssr":"Bàoshān Sǎnrén",
 	"cssr":"Cángsè Sànrén",
@@ -59,7 +57,7 @@
 	"tlj":"Tiānláng-jūn",
 	"lgj":"Lǐnguāng-jūn",
 	"bingge":"Original Luò Bīnghé",
-	
+
 	"hc": "Huā Chéng",
 	"xl": "Xiè Lián",
 	"fx": "Fēng Xìn",
@@ -117,6 +115,9 @@
 	"3zun":"Lán Huàn | Lán Xīchén/Mèng Yáo | Jīn Guāngyáo/Niè Míngjué",
 	"nieyao":"Mèng Yáo | Jīn Guāngyáo/Niè Míngjué",
 	"sangyao":"Mèng Yáo | Jīn Guāngyáo/Niè Huáisāng",
+	
+	"xuexiao":"Xiǎo Xīngchén/Xuē Yáng | Xuē Chéngměi",
+	"songxiao":"Sòng Lán | Sòng Zǐchēn/Xiǎo Xīngchén",
 
 	"niecest":"Niè Huáisāng/Niè Míngjué",
 
