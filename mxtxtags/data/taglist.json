@@ -1,24 +1,10 @@
 {
 	"lwj": "Lán Zhàn | Lán Wàngjī",
 	"wwx": "Wèi Yīng | Wèi Wúxiàn",
-	"wangxian": "Lán Zhàn | Lán Wàngjī/Wèi Yīng | Wèi Wúxiàn",
-	"lbh": "Luò Bīnghé",
-	"sqq": "Shěn Yuán | Shěn Qīngqiū",
-	"bingqiu": "Luò Bīnghé/Shěn Yuán | Shěn Qīngqiū",
-	"hc": "Huā Chéng",
-	"xl": "Xiè Lián",
-	"hualian": "Huā Chéng/Xiè Lián",
-	"mdzs": "魔道祖师 - 墨香铜臭 | Módào Zǔshī - Mòxiāng Tóngxiù",
-	"cql": "陈情令 | The Untamed (TV)",
-	"mdzsdonghua": "魔道祖师 | Módào Zǔshī (Cartoon)",
-	"sv": "人渣反派自救系统 - 墨香铜臭 | The Scum Villain's Self-Saving System - Mòxiāng Tóngxiù",
-	"tgcf": "天官赐福 - 墨香铜臭 | Tiān Guān Cì Fú - Mòxiāng Tóngxiù",
-
 	"jc":"Jiāng Chéng | Jiāng Wǎnyín",
 	"jyl":"Jiāng Yànlí",
 	"jfm":"Jiāng Fēngmián",
 	"yzy":"Yú Zǐyuān",
-
 	"jl":"Jīn Líng | Jīn Rúlán",
 	"jzx":"Jīn Zixuān",
 	"jgy":" Mèng Yáo | Jīn Guāngyáo",
@@ -26,63 +12,34 @@
 	"jzixun":"Jīn Zixūn",
 	"mxy":"Mò Xuányǔ",
 	"qs":"Qín Sù",
-
 	"lxc":"Lán Huàn | Lán Xīchén",
 	"lqr":"Lán Qǐrén",
 	"qhj":"Qīnghéng-jūn",
 	"lsz":"Lán Yuàn | Lán Sīzhuī",
 	"ljy":"Lán Jǐngyí",
 	"sushe":"Sū Shè | Sū Mǐnshàn",
-
 	"nhs":"Niè Huáisāng",
 	"nmj":"Niè Míngjué",
-
 	"wc":"Wēn Cháo",
 	"wx":"Wēn Xù",
 	"wq":"Wēn Qíng",
 	"wn":"Wēn Níng | Wēn Qiónglín",
 	"wlj":"Wáng Língjiāo",
 	"wzl":"Wēn Zhúliú",
-
 	"xxc":"Xiǎo Xīngchén",
 	"sl":"Sòng Lán | Sòng Zǐchēn",
 	"xy":"Xuē Yáng | Xuē Chéngměi",
 	"aqing":"Ā-Qìng",
 	"xuexiao":"Xiǎo Xīngchén/Xuē Yáng | Xuē Chéngměi",
 	"songxiao":"Sòng Lán | Sòng Zǐchēn/Xiǎo Xīngchén",
-
 	"ozz":"Ōuyáng Zizhēn",
 	"bssr":"Bàoshān Sǎnrén",
 	"cssr":"Cángsè Sànrén",
 	"wcz":"Wèi Chǎngzé",
 	"mianmian":"Luó Qīngyáng",
 
-	"xicheng":"Jiāng Chéng | Jiāng Wǎnyín/Lán Huàn | Lán Xīchén",
-	"chengxian":"Jiāng Chéng | Jiāng Wǎnyín/Wèi Yīng | Wèi Wúxiàn",
-	"mingcheng":"Jiāng Chéng | Jiāng Wǎnyín/Niè Míngjué",
-	"chengyao":"Jiāng Chéng | Jiāng Wǎnyín/Mèng Yáo | Jīn Guāngyáo",
-	"chengzhan":"Jiāng Chéng | Jiāng Wǎnyín/Lán Zhàn | Lán Wàngjī",
-	"zhancheng":"Jiāng Chéng | Jiāng Wǎnyín/Lán Zhàn | Lán Wàngjī",
-	"chengning":"Jiāng Chéng | Jiāng Wǎnyín/Wēn Níng | Wēn Qiónglín",
-	"ningcheng":"Jiāng Chéng | Jiāng Wǎnyín/Wēn Níng | Wēn Qiónglín",
-	"chengyi":"Jiāng Chéng | Jiāng Wǎnyín/Lán Jǐngyí",
-	"sangcheng":"Jiāng Chéng | Jiāng Wǎnyín/Niè Huáisāng",
-
-	"ningxian": "Wèi Yīng | Wèi Wúxiàn/Wēn Níng | Wēn Qiónglín",
-	"ningxuanli": "Jiāng Yànlí/Jīn Zixuān",
-	"xuanli":"Jiāng Yànlí/Jīn Zixuān",
-
-	"xiyao":"Lán Huàn | Lán Xīchén/Mèng Yáo | Jīn Guāngyáo",
-	"nielan":"Lán Huàn | Lán Xīchén/Niè Míngjué",
-	"3zun":"Lán Huàn | Lán Xīchén/Mèng Yáo | Jīn Guāngyáo/Niè Míngjué",
-	"nieyao":"Mèng Yáo | Jīn Guāngyáo/Niè Míngjué",
-	"sangyao":"Mèng Yáo | Jīn Guāngyáo/Niè Huáisāng",
-
-	"niecest":"Niè Huáisāng/Niè Míngjué",
-
-
-
-
+	"lbh": "Luò Bīnghé",
+	"sqq": "Shěn Yuán | Shěn Qīngqiū",
 	"sj":"Original Shěn Qīngqiū",
 	"yqy":"Yuè Qīngyuán",
 	"lqg":"Liǔ Qīnggē",
@@ -93,28 +50,18 @@
 	"mqf":"Mù Qīngfāng",
 	"qqq":"Qí Qīngqī",
 	"yyx": "Yáng Yìxuān",
-
 	"gyx":"Gōngyí Xiāo",
 	"sxy":"Sū Xīyán",
 	"hhpm":"Lǎo Gōngzhǔ | Old Palace Master",
-
 	"mbj":"Mò Běijūn",
 	"shl":"Shā Huálíng",
 	"zzl":"Zhúzhī-láng",
 	"tlj":"Tiānláng-jūn",
 	"lgj":"Lǐnguāng-jūn",
 	"bingge":"Original Luò Bīnghé",
-
-	"79":"Original Shěn Qīngqiū/Yuè Qīngyuán",
-	"qijiu":"Original Shěn Qīngqiū/Yuè Qīngyuán",
-	"bingjiu":"Original Luò Bīnghé/Original Shěn Qīngqiū",
-	"liushen":"Liǔ Qīnggē/Shěn Yuán | Shěn Qīngqiū",
-	"moshang":"Mò Běijūn/Shàng Qīnghuá",
-	"yangliu": "Liǔ Qīnggē/Yáng Yìxuān",
-
-
-
-
+	
+	"hc": "Huā Chéng",
+	"xl": "Xiè Lián",
 	"fx": "Fēng Xìn",
 	"mq": "Mù Qíng (Tiān Guān Cì Fú)",
 	"cc": "Cuò Cuò",
@@ -139,6 +86,47 @@
 	"jy": "Jiàn Yù",
 	"ly": "Láng Yíng",
 	"bj": "Bái Jīn (Tiān Guān Cì Fú)",
+	
+
+	"wangxian": "Lán Zhàn | Lán Wàngjī/Wèi Yīng | Wèi Wúxiàn",
+	"bingqiu": "Luò Bīnghé/Shěn Yuán | Shěn Qīngqiū",
+	"hualian": "Huā Chéng/Xiè Lián",
+	"mdzs": "魔道祖师 - 墨香铜臭 | Módào Zǔshī - Mòxiāng Tóngxiù",
+	"cql": "陈情令 | The Untamed (TV)",
+	"mdzsdonghua": "魔道祖师 | Módào Zǔshī (Cartoon)",
+	"sv": "人渣反派自救系统 - 墨香铜臭 | The Scum Villain's Self-Saving System - Mòxiāng Tóngxiù",
+	"tgcf": "天官赐福 - 墨香铜臭 | Tiān Guān Cì Fú - Mòxiāng Tóngxiù",
+
+	"xicheng":"Jiāng Chéng | Jiāng Wǎnyín/Lán Huàn | Lán Xīchén",
+	"chengxian":"Jiāng Chéng | Jiāng Wǎnyín/Wèi Yīng | Wèi Wúxiàn",
+	"mingcheng":"Jiāng Chéng | Jiāng Wǎnyín/Niè Míngjué",
+	"chengyao":"Jiāng Chéng | Jiāng Wǎnyín/Mèng Yáo | Jīn Guāngyáo",
+	"chengzhan":"Jiāng Chéng | Jiāng Wǎnyín/Lán Zhàn | Lán Wàngjī",
+	"zhancheng":"Jiāng Chéng | Jiāng Wǎnyín/Lán Zhàn | Lán Wàngjī",
+	"chengning":"Jiāng Chéng | Jiāng Wǎnyín/Wēn Níng | Wēn Qiónglín",
+	"ningcheng":"Jiāng Chéng | Jiāng Wǎnyín/Wēn Níng | Wēn Qiónglín",
+	"chengyi":"Jiāng Chéng | Jiāng Wǎnyín/Lán Jǐngyí",
+	"sangcheng":"Jiāng Chéng | Jiāng Wǎnyín/Niè Huáisāng",
+
+	"ningxian": "Wèi Yīng | Wèi Wúxiàn/Wēn Níng | Wēn Qiónglín",
+	"ningxuanli": "Jiāng Yànlí/Jīn Zixuān",
+	"xuanli":"Jiāng Yànlí/Jīn Zixuān",
+
+	"xiyao":"Lán Huàn | Lán Xīchén/Mèng Yáo | Jīn Guāngyáo",
+	"nielan":"Lán Huàn | Lán Xīchén/Niè Míngjué",
+	"3zun":"Lán Huàn | Lán Xīchén/Mèng Yáo | Jīn Guāngyáo/Niè Míngjué",
+	"nieyao":"Mèng Yáo | Jīn Guāngyáo/Niè Míngjué",
+	"sangyao":"Mèng Yáo | Jīn Guāngyáo/Niè Huáisāng",
+
+	"niecest":"Niè Huáisāng/Niè Míngjué",
+
+	"79":"Original Shěn Qīngqiū/Yuè Qīngyuán",
+	"qijiu":"Original Shěn Qīngqiū/Yuè Qīngyuán",
+	"bingjiu":"Original Luò Bīnghé/Original Shěn Qīngqiū",
+	"liushen":"Liǔ Qīnggē/Shěn Yuán | Shěn Qīngqiū",
+	"moshang":"Mò Běijūn/Shàng Qīnghuá",
+	"yangliu": "Liǔ Qīnggē/Yáng Yìxuān",
+
 	"calamities": "Bái Wúxiàng & Hè Xuán & Huā Chéng & Qī Róng",
 	"xianle": "Fēng Xìn & Mù Qíng & Xiè Lián",
 	"threetumors": "Líng Wén & Péi Míng & Shī Wúdù",
