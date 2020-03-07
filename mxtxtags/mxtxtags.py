@@ -4,10 +4,12 @@
 import discord
 import json
 import re
+import random
 
 # Red
 from redbot.core import commands, Config
 from redbot.core.data_manager import bundled_data_path
+from redbot.core.utils.chat_formatting import humanize_list
 
 
 class Mxtxtags(commands.Cog):
