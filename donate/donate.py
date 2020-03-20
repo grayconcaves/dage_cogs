@@ -36,7 +36,7 @@ class Donate(commands.Cog):
         """See the gift pool for DaGe's Godparents"""
 
         ficgift = "As a gift for donating to Dage, you will get a free fic from me!\n\nTo see how much your donation can get you, check my commission info on **=commish**"
-        await ctx.send(f"{ficgift}\n**All Donations will go to Super DaGe's Hosting.** I will not make profit from this bot. \nHowever, if you want to leave a tip for my work, or commission me instead, I would really appreciate it!")
+        await ctx.send(f"{ficgift}\n\n**All Donations will go to Super DaGe's Hosting.** I will not make profit from this bot. \nHowever, if you want to leave a tip for my work, or commission me instead, I would really appreciate it!")
 
     @commands.group()
     async def commission(self,ctx):
