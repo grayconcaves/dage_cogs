@@ -35,12 +35,8 @@ class Donate(commands.Cog):
     async def donategifts(self, ctx):
         """See the gift pool for DaGe's Godparents"""
 
-        gift1 = "**:star: 1 Legendary Chest** (5 for 4 ko-fi) - __1 ko-fi / $3 / ₱150__ :star:\n\n"
-        gift2 = "**:star: 1 Random high-stat Legendary Item** - __4 ko-fi / $12 / ₱500__ :star:\n- Choose one stat that will have a value of 10 or above.\n\n"
-        gift3 = "**:star: 1 Custom Ranger Pet** - __6 ko-fi / $18 / ₱750__ :star:\n- Name your own pet! You can choose its diplomacy requirement (since it will be automatically added to the pet pool) but its bonus will be a random number from 1.75 to 2.5.\n- You can replace your current pet with your custom pet. If you change classes then return to ranger, I will give you back your custom pet.\n\n"
-        gift4 = "**:star: 1 Custom Legendary Item** - __16 ko-fi / $48 / ₱2100__ :star:\n- Name your own Legendary item! It will have 1 random high (10-14) stat of your choice, and you can also choose its item slot. The rest of its stats will be random from -3 to 7.\n- To get a second high stat, just add __4 ko-fi__ and your item will be updated.\n- Your custom item will not be added to the chest pool. It will be added to your account only. To get a second copy of your item to give or trade away to a friend, just add __4 ko-fi__.\n- If you *accidentally* sell your custom item, I will give it back to you.\n\n"
         ficgift = "If you want a more tangible gift, I can also gift you a fic!\n :star:**300-500-word Fanfic Gift** - __1 ko-fi / $3 / ₱150__ :star:\n- See my commission info on **=commish**\n\n"
-        await ctx.send("If you are interested in donating for DaGe's hosting expenses, here are some gifts to sweeten the pot for you: \n\n{}{}{}{}{}**All Donations will go to Super DaGe's Hosting.** I will not make profit from this bot. However, if you want to leave a tip for my work, or commission me instead, I would really appreciate it!".format(gift1, gift2, gift3, gift4, ficgift))
+        await ctx.send("If you are interested in donating for DaGe's hosting expenses, here are some gifts to sweeten the pot for you: \n\n{}{}{}{}{}**All Donations will go to Super DaGe's Hosting.** I will not make profit from this bot. However, if you want to leave a tip for my work, or commission me instead, I would really appreciate it!".format(ficgift))
 
     @commands.group()
     async def commission(self,ctx):
@@ -75,7 +71,6 @@ class Donate(commands.Cog):
         plug_details.add_field(name="What I can make:", value="I can make basic cogs, like custom interview cogs to keep bots or members under a certain age out.", inline=False)
         plug_details.add_field(name="What I can't make:", value="Complicated commands, games, and cogs that need paid access keys. I will inform you if I believe I can fulfill your request.", inline=False)
         plug_details.add_field(name="Base Rate:", value="**$3**/**₱150** for a simple command.", inline=False)
-        plug_details.add_field(name="Plugins/cogs I made:", value="**ao3**\n**howto**\n**donate**\n**interview** (for one server)", inline=False)
         plug_details.set_footer(text=contact)
 
         await ctx.send(embed=plug_details)
