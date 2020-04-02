@@ -41,7 +41,7 @@ class Ao3(commands.Cog):
         """Returns details of a fic from a link"""      
 
         #SET NOTES
-        if notes is "":
+        if notes =="":
             notes = "None."
         else:
             nlimit = await self.config.guild(ctx.guild).noteslimit()
@@ -51,6 +51,11 @@ class Ao3(commands.Cog):
         if "chapter" in ficlink:
             newlink = ficlink.split("chapters")[0]
             ficlink = str(newlink)
+        if "collections" in ficlink:
+        	newlink = ficlink.split("/works/")[1]
+        	ficlink = str(f"https://archiveofourown.org/works/{newlink}")
+
+
         firstchap = f"{ficlink}/navigate"
         async with self.session.get(firstchap) as ao3navigation:
             navigate = BeautifulSoup(await ao3navigation.text(), 'html.parser', parse_only=SoupStrainer("ol"))
@@ -111,7 +116,7 @@ class Ao3(commands.Cog):
         chap_list = totalchapters.split("/")
         if "?" in chap_list[1]:
             status = "Work in Progress"
-        elif chap_list[0] is not chap_list[1]:
+        elif chap_list[0] != chap_list[1]:
             status = "Work in Progress"
         else:
             status = "Complete"
@@ -209,7 +214,7 @@ class Ao3(commands.Cog):
             await ctx.bot.wait_for("reaction_add", check=pred, timeout=30)
             await self._clear_react(ao3msg)
 
-            if pred.result is False:
+            if pred.result ==False:
                 await ao3msg.delete()
                 return
 
@@ -219,7 +224,7 @@ class Ao3(commands.Cog):
         autodel = await self.config.guild(ctx.guild).autodelete()
  
         try:
-            if autodel is True:
+            if autodel ==True:
                 await ctx.message.delete()
             return
         except:
@@ -283,7 +288,7 @@ Result:
         try:
             await ctx.bot.wait_for("reaction_add", check=pred, timeout=30)
 
-            if pred.result is True:
+            if pred.result ==True:
                 await preview.delete()
                 params = {
                     "title": "Title", 
