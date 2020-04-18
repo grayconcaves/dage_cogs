@@ -71,13 +71,13 @@ class Promptgen(commands.Cog):
         """Generate a smutty romance prompt.
 
         To specify the number of tropes (challenges), just include a number. MAX: 5
-        e.g. `[p]prompt 2`
+        e.g. `[p]smutprompt 2`
 
         To include Extreme NSFW kinks, add the 'extreme' flag.
-        e.g. `[p]prompt 2 extreme `
+        e.g. `[p]smutprompt 2 extreme `
 
         To specify the number of kinks, just include a number AFTER the number of tropes. MAX: 5
-        e.g. `[p]prompt 2 2 extreme ` or `[p]prompt 2 2`
+        e.g. `[p]smutprompt 2 2 extreme ` or `[p]prompt 2 2`
         """
 
         # DATA VALIDATION
