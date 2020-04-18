@@ -43,7 +43,7 @@ class Promptgen(commands.Cog):
 
 
     @commands.command(aliases=['prompts'])
-    async def prompt(self, ctx, numtropes=1, flag=" ", numkinks=1):
+    async def prompt(self, ctx, numtropes=1):
         """Generate a romance prompt.
 
         To specify the number of tropes (challenges), just include a number. MAX: 5
