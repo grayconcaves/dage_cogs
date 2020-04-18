@@ -23,16 +23,16 @@ class Ao3(commands.Cog):
         self.session = aiohttp.ClientSession()
         self.config = Config.get_conf(self, identifier=9657852, force_registration=True)
         self.config.register_guild(
-            autodelete= False,
-            censor = True,
-            embed = False,
-            pairlimit = 3,
-            taglimit = 5,
-            fandomlimit = 1,
-            noteslimit = 500,
-            sumlimit = 1500,
-            defaultformat = "**{title}** by **{authors}**\n{url}\n**Fandoms:** {fandom}\n**Rating:** {rating}     **Warnings:** {warnings}\n**Relationships:** {pairing}\n**Tags:** {tags}\n**Summary:** {summary}**Words:** {words}     **Chapters:** {totalchapters}\n**Notes by {reccer}**: {notes}",
-            formatting = "Title: **__{title}__**\nAuthor: {authors}\nFandom: {fandom}\nPairing: {pairing}\nRating: {rating}\nWarning: {warnings}\n\nSummary: {summary}\nTags: {tags}\nChapters: {totalchapters}\n\nRecced by {reccer} {notes} \nRead it here: {url}"         
+            autodelete=False,
+            censor=True,
+            embed=False,
+            pairlimit=3,
+            taglimit=5,
+            fandomlimit=1,
+            noteslimit=500,
+            sumlimit=1500,
+            defaultformat="**{title}** by **{authors}**\n{url}\n**Fandoms:** {fandom}\n**Rating:** {rating}     **Warnings:** {warnings}\n**Relationships:** {pairing}\n**Tags:** {tags}\n**Summary:** {summary}**Words:** {words}     **Chapters:** {totalchapters}\n**Notes by {reccer}**: {notes}",
+            formatting="Title: **__{title}__**\nAuthor: {authors}\nFandom: {fandom}\nPairing: {pairing}\nRating: {rating}\nWarning: {warnings}\n\nSummary: {summary}\nTags: {tags}\nChapters: {totalchapters}\n\nRecced by {reccer} {notes} \nRead it here: {url}"         
         )
     
     @commands.guild_only()
@@ -40,20 +40,20 @@ class Ao3(commands.Cog):
     async def ao3(self, ctx, ficlink, *, notes=""):
         """Returns details of a fic from a link"""      
 
-        #SET NOTES
-        if notes =="":
+        # SET NOTES
+        if notes == "":
             notes = "None."
         else:
             nlimit = await self.config.guild(ctx.guild).noteslimit()
             notes = notes[:nlimit]
         
-        #GET URL
+        # GET URL
         if "chapter" in ficlink:
             newlink = ficlink.split("chapters")[0]
             ficlink = str(newlink)
         if "collections" in ficlink:
-        	newlink = ficlink.split("/works/")[1]
-        	ficlink = str(f"https://archiveofourown.org/works/{newlink}")
+            newlink = ficlink.split("/works/")[1]
+            ficlink = str(f"https://archiveofourown.org/works/{newlink}")
 
 
         firstchap = f"{ficlink}/navigate"
@@ -62,11 +62,11 @@ class Ao3(commands.Cog):
         firstchap = navigate.find("li").a['href']
         url = f"https://archiveofourown.org{firstchap}?view_adult=true"
 
-        #START SCRAPING
+        # START SCRAPING
         async with self.session.get(url) as ao3session:
             result = BeautifulSoup(await ao3session.text(), 'html.parser')
     
-        #GET AUTHORS
+        # GET AUTHORS
         try:
             a = result.find_all("a", {'rel': 'author'})
             author_list = []
@@ -74,19 +74,19 @@ class Ao3(commands.Cog):
                 author_list.append(author.string.strip())
             try:
                 authors = humanize_list(deduplicate_iterables(author_list))
-            except:
+            except Exception:
                 authors = "Anonymous"
-        except:
+        except Exception:
             return await ctx.send("Error loading author list.")
-        ''   
-        #GET TITLE
+    
+        # GET TITLE
         try:
             preface = result.find("div", {'class': 'preface group'}).h2.string
             title = str(preface.strip())
-        except:
+        except Exception:
             title = "No title found."
 
-        #GET FANDOM
+        # GET FANDOM
         try:
             fan = result.find("dd", {'class': 'fandom tags'})
             fan_list = []
@@ -94,10 +94,10 @@ class Ao3(commands.Cog):
             for fandom in fan.find_all("li", limit=fandomlimit):
                 fan_list.append(fandom.a.string)
             fandom = humanize_list(fan_list)
-        except:
+        except Exception:
             fandom = "No fandom found."
         
-        #GET PAIRING
+        # GET PAIRING
         try:
             reltags = result.find("dd", {'class': 'relationship tags'})
             pair_list = []
@@ -105,14 +105,14 @@ class Ao3(commands.Cog):
             for rel in reltags.find_all("li", limit=pairlimit):
                 pair_list.append(rel.a.string)
             pairing = humanize_list(pair_list)
-        except:
+        except Exception:
             pairing = "No Pairing."
 
-        #GET CHAPTERS
+        # GET CHAPTERS
         chapters = result.find("dd", {'class': 'chapters'})
         totalchapters = str(BeautifulSoup.getText(chapters))
 
-        #GET STATUS
+        # GET STATUS
         chap_list = totalchapters.split("/")
         if "?" in chap_list[1]:
             status = "Work in Progress"
@@ -121,14 +121,14 @@ class Ao3(commands.Cog):
         else:
             status = "Complete"
 
-        #GET RATING
+        # GET RATING
         try:
             rate = result.find("dd", {'class': 'rating tags'})
             rating = rate.a.string
-        except:
+        except Exception:
             rating = "Not Rated"
 
-        #GET SUMMARY
+        # GET SUMMARY
         try:
             div = result.find("div", {'class': 'preface group'})
             userstuff = div.find("blockquote", {'class': 'userstuff'})
@@ -137,10 +137,10 @@ class Ao3(commands.Cog):
             summ = f"{summarytest}".replace('**', '. \n\n')
             slimit = await self.config.guild(ctx.guild).sumlimit()
             summary = summ[:slimit]
-        except:
+        except Exception:
             summary = "No work summary found." 
 
-        #GET TAGS
+        # GET TAGS
         try:
             use_censor = await self.config.guild(ctx.guild).censor()
             freeform = result.find("dd", {'class': 'freeform tags'})
@@ -153,26 +153,26 @@ class Ao3(commands.Cog):
             else:
                 tags = humanize_list(tag_list)
 
-        except:
+        except Exception:
             tags = "No tags found."
 
-        #GET LANGUAGE
+        # GET LANGUAGE
         language = result.find("dd", {'class': 'language'}).string.strip()
 
-        #GET WORDS
+        # GET WORDS
         words = int(result.find("dd", {'class': 'words'}).string.replace(",",""))
 
-        #GET WARNINGS
+        # GET WARNINGS
         warntags = result.find("dd", {'class': 'warning tags'})
         warn_list = []
         try:
             for warning in warntags.find_all("li"):
                 warn_list.append(warning.a.string)
             warnings = humanize_list(warn_list)
-        except:
+        except Exception:
             warnings = "No warnings found."
             
-        #CHECK INFO FORMAT
+        # CHECK INFO FORMAT
         use_embed = await self.config.guild(ctx.guild).embed()
         data = await self.config.guild(ctx.guild).formatting()
 
@@ -214,7 +214,7 @@ class Ao3(commands.Cog):
             await ctx.bot.wait_for("reaction_add", check=pred, timeout=30)
             await self._clear_react(ao3msg)
 
-            if pred.result ==False:
+            if pred.result is False:
                 await ao3msg.delete()
                 return
 
@@ -224,10 +224,10 @@ class Ao3(commands.Cog):
         autodel = await self.config.guild(ctx.guild).autodelete()
  
         try:
-            if autodel ==True:
+            if autodel is True:
                 await ctx.message.delete()
             return
-        except:
+        except Exception:
             return
    
 
@@ -267,7 +267,6 @@ You can also add whitespace (using Shift+Enter) as well as use Discord's native 
         
 For example:
 ```[p]ao3format\n**{title}** by {authors}.\nPairing: {pairing}\nRating: {rating}\nTags: {tags}\n\nSummary: \n{summary}```
-
 Result:
 ```**Title** by Author. \nPairing: Pairing(s) \nRating: Rating \nTags: Tag 1, Tag 2, Tag 3, Tag 4, Tag 5\n\nSummary:\nsummary```
 """
@@ -288,7 +287,7 @@ Result:
         try:
             await ctx.bot.wait_for("reaction_add", check=pred, timeout=30)
 
-            if pred.result ==True:
+            if pred.result is True:
                 await preview.delete()
                 params = {
                     "title": "Title", 
@@ -359,7 +358,7 @@ Result:
         """Set a maximum limit for additional tags"""
         try:
             maxtags = int(maxtags)
-        except:
+        except Exception:
             await ctx.send("Please use a number.")
         if maxtags < 1:
             await ctx.send("Please use a number greater than 1.")
@@ -373,7 +372,7 @@ Result:
         """Set a maximum limit for pairing/relationship tags"""
         try:
             maxpairtags = int(maxpairtags)
-        except:
+        except Exception:
             await ctx.send("Please use a number.")
         if maxpairtags < 1:
             await ctx.send("Please use a number greater than 1.")
@@ -387,7 +386,7 @@ Result:
         """Set a maximum limit for fandom tags"""
         try:
             maxfandomtags = int(maxfandomtags)
-        except:
+        except Exception:
             await ctx.send("Please use a number.")
         if maxfandomtags < 1:
             await ctx.send("Please use a number greater than 1.")
