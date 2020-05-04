@@ -27,12 +27,16 @@ class Hug(commands.Cog):
     async def hug(self, ctx, huggee: discord.Member):
         """Give someone a hug!"""
         
+        hugger = ctx.author.nick
+        if hugger == huggee:
+            hugger = Super Dage
+        
         hugsies = huggee.nick
         if hugsies == None:
             hugsies = huggee.name
 
         gif = random.choice(self.gifs)
-        title = f"**{ctx.author.nick}** gives **{hugsies}** a big, warm hug!"
+        title = f"**{hugger}** gives **{hugsies}** a big, warm hug!"
 
         em_perms = ctx.channel.permissions_for(ctx.me).embed_links
 
