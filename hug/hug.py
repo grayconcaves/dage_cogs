@@ -32,12 +32,12 @@ class Hug(commands.Cog):
             hugsies = huggee.name
 
         gif = random.choice(self.gifs)
-        title = f"**{ctx.author.nick}** hugs **{hugsies}**..."
+        title = f"**{ctx.author.nick}** gives **{hugsies}** a big, warm hug!"
 
         em_perms = ctx.channel.permissions_for(ctx.me).embed_links
 
         if em_perms is True:
-            data = discord.Embed(title=title)
+            data = discord.Embed(title=title, color=11001100)
             data.set_image(url=gif)
             msg = await ctx.send(embed=data)
         else:
