@@ -28,11 +28,11 @@ class Hug(commands.Cog):
         """Give someone a hug!"""
         
         hugsies = huggee.nick
-        if hugsies == "None":
-            hugsiest = huggee
+        if hugsies == None:
+            hugsies = huggee.name
 
         gif = random.choice(self.gifs)
-        title = f"**{ctx.author.nick}** hugs **{huggee.nick}**..."
+        title = f"**{ctx.author.nick}** hugs **{hugsies}**..."
 
         em_perms = ctx.channel.permissions_for(ctx.me).embed_links
 
