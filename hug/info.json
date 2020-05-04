@@ -1,0 +1,12 @@
+{
+    "author" : [
+        "Chris/Gai"
+    ],
+    "install_msg" : "Thank you for installing my Hug cog. Type `[p]help Hug` for more information.",
+    "name" : "Hug",
+    "short" : "Give someone an anime hug!",
+    "description" : "Give someone an anime hug! <p>hug <person you want to hug>",
+    "disabled" : false,
+    "tags" : ["hug"],
+    "min_python_version": [3, 8, 0]
+}
