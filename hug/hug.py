@@ -26,6 +26,10 @@ class Hug(commands.Cog):
     @commands.command()
     async def hug(self, ctx, huggee: discord.Member):
         """Give someone a hug!"""
+        
+        hugsies = huggee.nick
+        if hugsies = None:
+            hugsiest = huggee
 
         gif = random.choice(self.gifs)
         title = f"**{ctx.author.nick}** hugs **{huggee.nick}**..."
