@@ -27,9 +27,11 @@ class Hug(commands.Cog):
     async def hug(self, ctx, huggee: discord.Member):
         """Give someone a hug!"""
         
-        hugger = ctx.author.nick
+        hugger = ctx.author
         if hugger == huggee:
             hugger = "Super Dage"
+        else:
+            hugger = ctx.author.nick
         
         hugsies = huggee.nick
         if hugsies == None:
