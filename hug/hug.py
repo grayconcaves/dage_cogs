@@ -37,7 +37,7 @@ class Hug(commands.Cog):
         em_perms = ctx.channel.permissions_for(ctx.me).embed_links
 
         if em_perms is True:
-            data = discord.Embed(title=title, color=13639712)
+            data = discord.Embed(title=title, color=9311766)
             data.set_image(url=gif)
             msg = await ctx.send(embed=data)
         else:
