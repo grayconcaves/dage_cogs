@@ -28,7 +28,7 @@ class Hug(commands.Cog):
         """Give someone a hug!"""
         
         hugsies = huggee.nick
-        if hugsies = None:
+        if hugsies = "None":
             hugsiest = huggee
 
         gif = random.choice(self.gifs)
