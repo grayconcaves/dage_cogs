@@ -29,7 +29,7 @@ class Hug(commands.Cog):
         
         hugger = ctx.author.nick
         if hugger == huggee:
-            hugger = Super Dage
+            hugger = "Super Dage"
         
         hugsies = huggee.nick
         if hugsies == None:
