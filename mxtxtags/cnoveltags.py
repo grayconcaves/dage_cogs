@@ -1,4 +1,4 @@
-# MXTX character/relationship tag generator cog for Dage
+# Convert CNovel and danmei fandom names to Ao3-format tags
 
 # Discord
 import discord
@@ -12,8 +12,8 @@ from redbot.core.data_manager import bundled_data_path
 from redbot.core.utils.chat_formatting import humanize_list
 
 
-class Mxtxtags(commands.Cog):
-    """Convert MXTX fandom names to Ao3-format tags"""
+class Cnoveltags(commands.Cog):
+    """Convert CNovel and danmei fandom names to Ao3-format tags"""
 
     def __init__(self, bot):
         self.bot = bot
@@ -23,8 +23,8 @@ class Mxtxtags(commands.Cog):
         with tag_fp.open("r", encoding='utf-8') as tagses:
             self.TAGLIST = json.load(tagses)
 
-    @commands.command(aliases=['mxtxtags','tag', 'cntag'])
-    async def mxtxtag(self, ctx, *, tags):
+    @commands.command(aliases=['tag'])
+    async def cntag(self, ctx, *, tags):
         """Replace fandom/unmarked pinyin names with Ao3's format
 
 Ao3 still uses pinyin with tone marks/diacritics for most MXTX characters and relationships.
