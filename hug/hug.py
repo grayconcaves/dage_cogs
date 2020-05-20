@@ -30,6 +30,8 @@ class Hug(commands.Cog):
         hugger = ctx.author
         if hugger == huggee:
             hugger = "Super Dage"
+        elif hugger == None:
+        	hugger = ctx.author.name
         else:
             hugger = ctx.author.nick
         
