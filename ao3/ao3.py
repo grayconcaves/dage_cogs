@@ -162,6 +162,12 @@ class Ao3(commands.Cog):
         # GET WORDS
         words = int(result.find("dd", {'class': 'words'}).string.replace(",",""))
 
+        # GET KUDOS
+        kudos = int(result.find("dd", {'class': 'kudos'}).string.replace(",",""))
+
+        # GET HITS
+        hits = int(result.find("dd", {'class': 'hits'}).string.replace(",",""))
+
         # GET WARNINGS
         warntags = result.find("dd", {'class': 'warning tags'})
         warn_list = []
@@ -184,7 +190,7 @@ class Ao3(commands.Cog):
             data.add_field(name="Pairings:", value=pairing, inline=False)
             data.add_field(name="Tags:", value=tags, inline=False)
             data.add_field(name= f"Rec Notes by {ctx.author}: ", value=notes, inline=False)
-            data.set_footer(text= f"Language: {language}     |       Words: {words}       |       Status: {status}        ")
+            data.set_footer(text= f"Language: {language}     |       Words: {words}       |       Kudos: {kudos}        |       Status: {status}        ")
             ao3msg = await ctx.send(embed=data)
 
         else:
@@ -200,7 +206,9 @@ class Ao3(commands.Cog):
                 "summary": summary,
                 "totalchapters": totalchapters,
                 "status": status, 
-                "words": words, 
+                "words": words,
+                "kudos": kudos,
+                "hits": hits, 
                 "reccer" : ctx.author.mention,
                 "notes": notes,
                 "url": f"<{ficlink}>"
@@ -260,7 +268,7 @@ To reset to default formatting, use RESET. i.e. `[p]ao3format RESET`
 To specify the work info and format that you want to show on your server: `[p]ao3format <custom formatting>`
 
 You can use the following parameters for your ao3 info:
-```url, title, authors, rating, warnings, language, fandom, pairing, tags, summary, totalchapters, status, words, notes, reccer```
+```url, title, authors, rating, warnings, language, fandom, pairing, tags, summary, totalchapters, status, words, kudos, hits, notes, reccer```
 
 To format the message with these parameters, include them in your message encased in curly braces {}
 You can also add whitespace (using Shift+Enter) as well as use Discord's native formatting.
