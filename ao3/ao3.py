@@ -38,7 +38,9 @@ class Ao3(commands.Cog):
     @commands.guild_only()
     @commands.command()
     async def ao3(self, ctx, ficlink, *, notes=""):
-        """Returns details of a fic from a link"""      
+        """Returns details of a fic from a link
+
+        If the fic you inputted is wrong, just click the ❎ emoji to delete the message (Needs Manage Messages permissions)."""      
 
         # SET NOTES
         if notes == "":
