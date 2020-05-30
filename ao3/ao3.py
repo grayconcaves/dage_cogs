@@ -158,6 +158,13 @@ class Ao3(commands.Cog):
         except Exception:
             tags = "No tags found."
 
+        # GET DATE PUBLISHED AND UPDATED
+        published = result.find("dd", {'class': 'published'}).string.strip()
+        try:
+            updated = result.find("dd", {'class': 'status'}).string.strip()
+        except Exception:
+            updated = published
+
         # GET LANGUAGE
         language = result.find("dd", {'class': 'language'}).string.strip()
 
@@ -192,7 +199,7 @@ class Ao3(commands.Cog):
             data.add_field(name="Pairings:", value=pairing, inline=False)
             data.add_field(name="Tags:", value=tags, inline=False)
             data.add_field(name= f"Rec Notes by {ctx.author}: ", value=notes, inline=False)
-            data.set_footer(text= f"Language: {language}     |       Words: {words}       |       Kudos: {kudos}        |       Status: {status}        ")
+            data.set_footer(text= f"Language: {language}     |       Words: {words}       |       Date Updated: {updated}        |       Status: {status}        ")
             ao3msg = await ctx.send(embed=data)
 
         else:
@@ -213,7 +220,9 @@ class Ao3(commands.Cog):
                 "hits": hits, 
                 "reccer" : ctx.author.mention,
                 "notes": notes,
-                "url": f"<{ficlink}>"
+                "url": f"<{ficlink}>",
+                "published": published,
+                "updated": updated
             }
             ao3msg = await ctx.send(data.format(**params))
 
@@ -270,7 +279,7 @@ To reset to default formatting, use RESET. i.e. `[p]ao3format RESET`
 To specify the work info and format that you want to show on your server: `[p]ao3format <custom formatting>`
 
 You can use the following parameters for your ao3 info:
-```url, title, authors, rating, warnings, language, fandom, pairing, tags, summary, totalchapters, status, words, kudos, hits, notes, reccer```
+```url, title, authors, rating, warnings, language, fandom, pairing, tags, summary, totalchapters, status, words, kudos, hits, published, updated, notes, reccer```
 
 To format the message with these parameters, include them in your message encased in curly braces {}
 You can also add whitespace (using Shift+Enter) as well as use Discord's native formatting.
@@ -311,7 +320,11 @@ Result:
                     "summary": "Summary",
                     "totalchapters": "Chapters",
                     "status": "Status", 
-                    "words": "Words", 
+                    "words": "Words",
+                    "kudos": "Kudos",
+                    "hits": "Hits",
+                    "published": "Date Published",
+                    "updated": "Date Updated", 
                     "reccer" : "@/person",
                     "notes": "Notes",
                     "url": "<Link Here>",
