@@ -77,7 +77,7 @@ class Promptgen(commands.Cog):
         e.g. `[p]smutprompt 2 extreme `
 
         To specify the number of kinks, just include a number AFTER the number of tropes. MAX: 5
-        e.g. `[p]smutprompt 2 2 extreme ` or `[p]prompt 2 2`
+        e.g. `[p]smutprompt 2 2 extreme ` or `[p]smutprompt 2 2`
         """
 
         # DATA VALIDATION
@@ -88,7 +88,7 @@ class Promptgen(commands.Cog):
 
         # CODE PROPER
         if flag == "extreme":
-            kink = f"Kink: {humanize_list(random.sample(self.EXTREMEKINKLIST, k=numkinks))}\n"
+            kink = f"Kink: {humanize_list(random.sample((self.EXTREMEKINKLIST+self.KINKLIST), k=numkinks))}\n"
             prof = f"{str(random.choice(self.NSFWPROFLIST))}"
             trope = f"Challenge: {humanize_list(random.sample(self.NSFWTROPELIST, k=numtropes))}"
         else:
