@@ -21,11 +21,11 @@ class Donate(commands.Cog):
         donators = "\nKyu14#6421\ncarabarks#7523\nAmarok#2128\nnendo#3874\nblootooth#7872\nBetaFib#5891\nEmppu#6746\nkikibug#0435\nLady Lily Anne#8265\nsandra#3799"
 
         donate_details = discord.Embed(description=thread)
-        donate_details.add_field(name="Check out the ko-fi post here:", value="https://ko-fi.com/Blog/Post/Super-DaGe-Hosting-Expenses-[Call-for-DonationsCo-Z8Z8YBCT", inline=False)
+        donate_details.add_field(name="Check out the ko-fi post here:", value="https://ko-fi.com/post/Hello-world-Help-Donate-to-keep-Dage-alive-U7U71ROSI", inline=False)
         donate_details.add_field(name="For Paypal donations: ", value="https://www.paypal.com/paypalme2/gaiandcloud", inline=False)
         donate_details.add_field(name="For Paymaya donations: ", value="https://imgur.com/a/2FMKu9h", inline=False)
         donate_details.add_field(name="For more info on donation gifts and commissions: ", value="=donategifts\n=commish")
-        donate_details.set_author(name="Help support Super DaGe's hosting expenses!", url="https://ko-fi.com/Blog/Post/Super-DaGe-Hosting-Expenses-[Open-Call-for-Donatio-K3K7YB25")
+        donate_details.set_author(name="Help support Super DaGe's hosting expenses!", url="https://ko-fi.com/post/Hello-world-Help-Donate-to-keep-Dage-alive-U7U71ROSI")
         donate_details.set_thumbnail(url="https://cdn.discordapp.com/avatars/556752532773273639/500c9b09118178e5e7fbbec7ffbd132b.png?size=1024")
         donate_details.add_field(name="Super DaGe's Godparents:", value=donators, inline=False)
 
@@ -48,8 +48,8 @@ class Donate(commands.Cog):
 
         contact = "Discord - tagape#3232     |     Twitter - galayugmagay     |     Email - gaiandcloud@gmail.com"
 
-        fic_details = discord.Embed(description="I'm currently accepting fanfiction/writing commissions! \n\nCheck out my commission card here: <https://docs.google.com/document/d/1OrGVk8HUutBdrB0zn2rZE-x8Gn13QpvThlCjcOUi9Rs/edit?usp=sharing>")
-        fic_details.set_author(name="Fanfiction Commission Info", url="https://docs.google.com/document/d/1OrGVk8HUutBdrB0zn2rZE-x8Gn13QpvThlCjcOUi9Rs/edit?usp=sharing")
+        fic_details = discord.Embed(description="I'm currently accepting fanfiction/writing commissions! \n\nCheck out my commission carrd here: <https://galayugmagay.carrd.co/#comms>")
+        fic_details.set_author(name="Fanfiction Commission Info", url="https://galayugmagay.carrd.co/#comms")
         fic_details.set_thumbnail(url="https://cdn.discordapp.com/avatars/190114956857835520/7701beecf58a2b7029af0fa1d479469e.png?size=1024")
         fic_details.add_field(name="What I will write:", value="Fandoms I know, any pairing, prompt, or even OCs of your choice. NSFW is okay!", inline=False)
         fic_details.add_field(name="Base Rate:", value="**$3**/**₱150** per 300 words.", inline=False)
