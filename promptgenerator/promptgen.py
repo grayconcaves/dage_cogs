@@ -65,7 +65,7 @@ class Promptgen(commands.Cog):
 
         return
 
-    @commands.command(aliases=['smutprompts'])
+    @commands.command(aliases=['smutprompts', 'smut'])
     @commands.is_nsfw()
     async def smutprompt(self, ctx, numtropes=1, numkinks=1, flag=" "):
         """Generate a smutty romance prompt.
@@ -125,12 +125,12 @@ class Promptgen(commands.Cog):
 
         return
 
-    @commands.command(aliases=['extremekink'])
+    @commands.command(aliases=['extremekink', 'extreme'])
     @commands.is_nsfw()
     async def extremekinks(self, ctx, numkinks=1):
-        """Generates a list of nsfw + extreme kinks.
+        """Generates a list of extreme kinks.
 
-        To generate a list of nsfw + extreme kinks:
+        To generate a list of extreme kinks:
         ```
         [p]extremekinks <number up to 6>
         """
