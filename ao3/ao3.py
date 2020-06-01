@@ -65,8 +65,11 @@ class Ao3(commands.Cog):
         url = f"https://archiveofourown.org{firstchap}?view_adult=true"
 
         # START SCRAPING
-        async with self.session.get(url) as ao3session:
-            result = BeautifulSoup(await ao3session.text(), 'html.parser')
+        try:
+        	async with self.session.get(url) as ao3session:
+        		result = BeautifulSoup(await ao3session.text(), 'html.parser')
+        except AttributeError:
+        	await ctx.send("Error fetching work info. Please ensure the work is not locked.")
     
         # GET AUTHORS
         try:
