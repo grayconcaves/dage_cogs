@@ -172,10 +172,16 @@ class Ao3(commands.Cog):
         words = int(result.find("dd", {'class': 'words'}).string.replace(",",""))
 
         # GET KUDOS
-        kudos = int(result.find("dd", {'class': 'kudos'}))
+        try:
+            kudos = int(result.find("dd", {'class': 'kudos'}))
+        else Exception:
+            kudos = 0
 
         # GET HITS
-        hits = int(result.find("dd", {'class': 'hits'}))
+        try:
+            hits = int(result.find("dd", {'class': 'hits'}))
+        else Exception:
+            hits = 0
 
         # GET WARNINGS
         warntags = result.find("dd", {'class': 'warning tags'})
