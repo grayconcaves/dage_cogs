@@ -59,14 +59,13 @@ class Ao3(commands.Cog):
 
 
         firstchap = f"{ficlink}/navigate"
+        async with self.session.get(firstchap) as ao3navigation:
+            navigate = BeautifulSoup(await ao3navigation.text(), 'html.parser', parse_only=SoupStrainer("ol"))
         try:
-            async with self.session.get(firstchap) as ao3navigation:
-                navigate = BeautifulSoup(await ao3navigation.text(), 'html.parser', parse_only=SoupStrainer("ol"))
+            firstchap = navigate.find("li").a['href']
+            url = f"https://archiveofourown.org{firstchap}?view_adult=true"
         except AttributeError:
-            await ctx.send("Error fetching work info. Please ensure the work is not locked.")
-    
-        firstchap = navigate.find("li").a['href']
-        url = f"https://archiveofourown.org{firstchap}?view_adult=true"
+            await ctx.send("Error fetching work. Please ensure it is not a locked work.")
 
         # START SCRAPING
         async with self.session.get(url) as ao3session:
