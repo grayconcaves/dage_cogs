@@ -65,7 +65,7 @@ class Ao3(commands.Cog):
             firstchap = navigate.find("li").a['href']
             url = f"https://archiveofourown.org{firstchap}?view_adult=true"
         except AttributeError:
-            await ctx.send("Error fetching work. Please ensure it is not a locked work.")
+            return await ctx.send("Error fetching work. Please ensure it is not a locked work.")
 
         # START SCRAPING
         async with self.session.get(url) as ao3session:
