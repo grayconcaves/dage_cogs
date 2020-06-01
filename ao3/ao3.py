@@ -174,13 +174,13 @@ class Ao3(commands.Cog):
         # GET KUDOS
         try:
             kudos = int(result.find("dd", {'class': 'kudos'}))
-        else Exception:
+        except Exception:
             kudos = 0
 
         # GET HITS
         try:
             hits = int(result.find("dd", {'class': 'hits'}))
-        else Exception:
+        except Exception:
             hits = 0
 
         # GET WARNINGS
