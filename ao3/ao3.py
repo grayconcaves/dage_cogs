@@ -56,6 +56,9 @@ class Ao3(commands.Cog):
         if "collections" in ficlink:
             newlink = ficlink.split("/works/")[1]
             ficlink = str(f"https://archiveofourown.org/works/{newlink}")
+        if "?view_full_work=true" in ficlink:
+            newlink = ficlink.split("?")[0]
+            ficlink = str(newlink)
 
 
         firstchap = f"{ficlink}/navigate"
@@ -65,7 +68,7 @@ class Ao3(commands.Cog):
             firstchap = navigate.find("li").a['href']
             url = f"https://archiveofourown.org{firstchap}?view_adult=true"
         except AttributeError:
-            return await ctx.send("Error fetching work. Please ensure it is not a locked work.")
+            return await ctx.send("Error loading work info. Please ensure that the work is not locked.")
 
         # START SCRAPING
         async with self.session.get(url) as ao3session:
@@ -176,14 +179,14 @@ class Ao3(commands.Cog):
 
         # GET KUDOS
         try:
-            kudos = int(result.find("dd", {'class': 'kudos'}))
-        except Exception:
+            kudos = int(result.find("dd", {'class': 'kudos'}).string.replace(",",""))
+        except AttributeError:
             kudos = 0
 
         # GET HITS
         try:
-            hits = int(result.find("dd", {'class': 'hits'}))
-        except Exception:
+            hits = int(result.find("dd", {'class': 'hits'}).string.replace(",",""))
+        except AttributeError:
             hits = 0
 
         # GET WARNINGS
