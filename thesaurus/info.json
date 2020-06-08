@@ -1,0 +1,12 @@
+{
+    "author" : [
+        "Chris/Gai"
+    ],
+    "install_msg" : "Thank you for installing! Type `[p]help Thesaurus` for more information.",
+    "name" : "Thesaurus",
+    "short" : "Thesaurus cog!",
+    "description" : "Get synonyms, antonyms, and more",
+    "disabled" : false,
+    "tags" : ["thesaurus"],
+    "min_python_version": [3, 8, 0]
+}
