@@ -25,7 +25,7 @@ class Shibe(commands.Cog):
             async with self.session.get(self.shibapi) as s:
                 shibe = await s.json()
             await ctx.send(shibe[0])
-        except:
+        except Exception:
             return
 
 
