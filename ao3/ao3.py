@@ -50,15 +50,17 @@ class Ao3(commands.Cog):
             notes = notes[:nlimit]
         
         # GET URL
-        if "chapter" in ficlink:
+        if ("chapter" in ficlink) or ("%" in ficlink):
             newlink = ficlink.split("chapters")[0]
             ficlink = str(newlink)
         if "collections" in ficlink:
             newlink = ficlink.split("/works/")[1]
             ficlink = str(f"https://archiveofourown.org/works/{newlink}")
-        if "?view_full_work=true" in ficlink:
+        if ("?view_full_work=true" in ficlink) or ("?show_comments=true" in ficlink):
             newlink = ficlink.split("?")[0]
             ficlink = str(newlink)
+        if ("series" in ficlink) or ("bookmarks" in ficlink) or ("users" in ficlink) or ("/comments/" in ficlink):
+            return
 
 
         firstchap = f"{ficlink}/navigate"
