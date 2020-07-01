@@ -32,7 +32,7 @@ Ao3 still uses pinyin with tone marks/diacritics for most MXTX characters and re
 This cog will convert most common fandom nicknames into Ao3's format, which you can then easily paste into Ao3's Character or Relationship tags boxes.
 
 e.g.
-```[p]mxtxtag wwx, bingqiu, hc/xl```
+```[p]tag wwx, bingqiu, hc/xl```
 will return
 ```Wèi Yīng | Wèi Wúxiàn, Luò Bīnghé/Shěn Yuán | Shěn Qīngqiū, Huā Chéng/Xiè Lián```
 
@@ -51,6 +51,10 @@ will return
 To generate less or more a pair, just include a number from 1 to 5. 
 
 To limit to a fandom, just add ONLY one of the fandom flags: `mdzs` | `sv` | `tgcf` | `all`
+e.g.
+```[p]pairgen all```
+will return
+```Xuē Yáng | Xuē Chéngměi/Péi Sù```
 
         """
 
