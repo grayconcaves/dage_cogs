@@ -28,9 +28,9 @@ class Ao3(commands.Cog):
             embed=False,
             pairlimit=3,
             taglimit=5,
-            fandomlimit=1,
-            noteslimit=500,
-            sumlimit=1500,
+            fandomlimit=2,
+            noteslimit=200,
+            sumlimit=500,
             defaultformat="**{title}** by **{authors}**\n{url}\n**Fandoms:** {fandom}\n**Rating:** {rating}     **Warnings:** {warnings}\n**Relationships:** {pairing}\n**Tags:** {tags}\n**Summary:** {summary}**Words:** {words}     **Chapters:** {totalchapters}\n**Notes by {reccer}**: {notes}",
             formatting="Title: **__{title}__**\nAuthor: {authors}\nFandom: {fandom}\nPairing: {pairing}\nRating: {rating}\nWarning: {warnings}\n\nSummary: {summary}\nTags: {tags}\nChapters: {totalchapters}\n\nRecced by {reccer} {notes} \nRead it here: {url}"         
         )
