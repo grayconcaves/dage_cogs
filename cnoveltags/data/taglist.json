@@ -30,7 +30,7 @@
     "sl":"Sòng Lán | Sòng Zǐchēn",
     "xy":"Xuē Yáng | Xuē Chéngměi",
     "aqing":"Ā-Qìng",
-    "ozz":"Ōuyáng Zizhēn",
+    "oyzz":"Ōuyáng Zizhēn",
     "bssr":"Bàoshān Sǎnrén",
     "cssr":"Cángsè Sànrén",
     "wcz":"Wèi Chǎngzé",
@@ -173,6 +173,8 @@
     "minji": "Lán Zhàn | Lán Wàngjī/Sū Shè | Sū Mǐnshàn",
     "yanqing": "Jiāng Yànlí/Wēn Qíng",
     "xixian": "Lán Huàn | Lán Xīchén/Wèi Yīng | Wèi Wúxiàn",
+    "juniorquartet": "Jīn Líng | Jīn Rúlán/Lán Jǐngyí/Lán Yuàn | Lán Sīzhuī/Ōuyáng Zizhēn",
+    "juniortrio": "Jīn Líng | Jīn Rúlán/Lán Jǐngyí/Lán Yuàn | Lán Sīzhuī",
     
     "fataljourney": "乱魄 | Fatal Journey (2020)"
 
