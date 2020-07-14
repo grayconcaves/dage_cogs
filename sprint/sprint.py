@@ -62,7 +62,7 @@ class Sprint(commands.Cog):
         return settime
     
 
-    @commands.command(aliases=['time'])
+    @commands.command(aliases=['t'])
     async def timeleft(self, ctx):
         """Check the time left for a sprint."""
         timer = self.start(timer)
