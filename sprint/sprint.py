@@ -27,7 +27,7 @@ class Sprint(commands.Cog):
 
 
     @commands.command(aliases=['sp'])
-    async def sprint(self, ctx, *, timer: int):
+    async def sprint(self, ctx, *, timer: int = 30):
         """Start a sprint with a timer (in minutes). Default is 30 minutes.
 
         e.g. `[p]sprint start 60` for a 60-minute sprint"""
