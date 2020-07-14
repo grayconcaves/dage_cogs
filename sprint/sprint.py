@@ -5,33 +5,49 @@ import discord
 
 # Red
 from redbot.core import commands, checks, Config
-from redbot.core.utils.chat_formatting import pagify
+from redbot.core.utils.chat_formatting import pagify, humanize_timedelta
 
 #libs
 import asyncio
 import time
 
-BaseCog = getattr(commands, "Cog", object)
-
-
-class Sprint(BaseCog):
+class Sprint(commands.Cog):
     """Writing sprint cog for Dage. Perfect for servers that hold sprints!"""
 
 
     def __init__(self, bot):
         self.bot = bot
+        self.config = Config.get_conf(self, identifier=75092445606, force_registration=True)
+        self.config.register_guild(
+            defaulttimer=900,
+            defaultpreptime=300,
+            customtimer=0,
+            custompreptime=0,
+        )
 
-    @commands.group(aliases=['sp'])
-    async def sprint(self, ctx):
-        """Group commands for sprint settings"""
-        pass
+
+    @commands.command(aliases=['sp'])
+    async def sprint(self, ctx, *, timer: int):
+        """Start a sprint with a timer (in minutes). Default is 30 minutes.
+
+        e.g. `[p]sprint start 60` for a 60-minute sprint"""
+        if timer == 0:
+            timer = 30
+        sprinttime = await self._set_time(timer)
+        sprinters = await self._get_sprinters(ctx)
+        mentions = [m.mention for m in sprinters]
+        mention_list = mentions[-1] + ", ".join(mentions[:-1])
+        start = await ctx.send("Sprint starts now! You have {} minute(s) to finish your work.".format(timer))
+        await asyncio.sleep(sprinttime)
+        await ctx.send("{}, the sprint has finished! Please share your word count and works on this channel.".format(mention_list))
+        return
 
 
     async def _get_sprinters(self, ctx):
         """Helper function to get list of sprinters"""
         msg = await ctx.send("React to this message to join the sprint. The sprint will start in 30 seconds.")
         await msg.add_reaction('✅')
-        time.sleep(30)
+        await asyncio.sleep(30)
         msg = await ctx.channel.fetch_message(msg.id) #get the latest version of the message
         reaction = [r for r in msg.reactions if r.emoji == '\N{WHITE HEAVY CHECK MARK}'][0]
         sprinters = []
@@ -40,26 +56,18 @@ class Sprint(BaseCog):
         return [s for s in sprinters if not s.bot]
 
 
-    @staticmethod
-    def _get_name_string(ctx, uid: int, domention: bool):
-        """Returns a member identification string from an id, checking for exceptions."""
-        member = ctx.guild.get_member(uid)
-        if member:
-            return member.mention if domention else member.display_name
-        return _('<removed member {uid}>').format(uid=uid)
+    async def _set_time(self, ctx):
+        """Set time for sprint functions"""
+        settime = ctx * 60
+        return settime
+    
 
-
-    @sprint.command()
-    async def start(self, ctx, timer: int):
-        """Start a sprint with a timer (in minutes)
-
-        e.g. `=sprint start 30` for a 30-minute sprint"""
-        sprinttime = 60 * timer
-        sprinters = await self._get_sprinters(ctx)
-        mentions = [m.mention for m in sprinters]
-        mention_list = mentions[-1] + ", " + ", ".join(mentions[:-1])
-        if len(sprinters) <= 1:
-            return await ctx.send("You need at least 2 members to start the sprint.")
-        start = await ctx.send("Sprint starts now! You have {} minute(s) to finish your work.".format(timer))
-        time.sleep(sprinttime)
-        await ctx.send("{}, the sprint has finished! Please share your word count and works on this channel.".format(mention_list))
+    @commands.command(aliases=['time'])
+    async def timeleft(self, ctx):
+        """Check the time left for a sprint."""
+        timer = self.start(timer)
+        if timer > 0:
+            timeleft = timer - time.time()
+            return await ctx.send("You have {} left for this sprint.".format(humanize_timedelta(seconds=timeleft)))
+        else:
+            return await ctx.send("You are not in a sprint.")
