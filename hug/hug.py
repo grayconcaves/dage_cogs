@@ -23,7 +23,7 @@ class Hug(commands.Cog):
             self.gifs = json.load(gifs)
     
     @commands.guild_only()
-    @commands.command()
+    @commands.command(aliases=['hugs'])
     async def hug(self, ctx, huggee: discord.Member):
         """Give someone a hug!"""
         
