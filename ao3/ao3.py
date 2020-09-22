@@ -143,7 +143,8 @@ class Ao3(commands.Cog):
             div = result.find("div", {'class': 'preface group'})
             userstuff = div.find("blockquote", {'class': 'userstuff'})
             stuff = str(BeautifulSoup.getText(userstuff))
-            summ = f"{stuff}".replace('\n', '\n\n')
+            summarytest = f"{stuff}".replace('. \n', '**').replace('.', '. ')
+            summ = f"{summarytest}".replace('**', '. \n\n')
             slimit = await self.config.guild(ctx.guild).sumlimit()
             summary = summ[:slimit]
         except Exception:
