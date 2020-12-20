@@ -70,7 +70,7 @@ To see the default formatting: `[p]formathelp default`
 
 To emulate the **Fanfic Rec Bot**, I recommend using this with Trusty-cogs [**retrigger**](https://github.com/TrustyJAID/Trusty-cogs/tree/master/retrigger) for it to automatically detect if an ao3 link has been used.
 
-`[p]retrigger command ao3 (?:(?=https://archiveofourown.org/works)|(?=https://ao3.org/works))(.*) ao3 {1}`
+`[p]retrigger command ao3 (?:(?=https:\/\/archiveofourown.org\/works)|(?=https:\/\/ao3.org\/works))(.*) ao3 {1}`
 
 Then you can restrict the channels where it does this automatically.
 
