@@ -21,7 +21,7 @@ class Donate(commands.Cog):
         donators = "\nKyu14#6421\ncarabarks#7523\nAmarok#2128\nnendo#3874\nblootooth#7872\nBetaFib#5891\nEmppu#6746\nkikibug#0435\nLady Lily Anne#8265\nsandra#3799\nfirelights56#8989\nbee (oh_fudgecakes)#3218"
 
         donate_details = discord.Embed(description=thread)
-        donate_details.add_field(name="Check out the ko-fi post here:", value="https://ko-fi.com/post/Hello-world-Help-Donate-to-keep-Dage-alive-U7U71ROSI", inline=False)
+        donate_details.add_field(name="Check out his ko-fi here:", value="https://ko-fi.com/superdage", inline=False)
         donate_details.add_field(name="For Paypal donations: ", value="https://www.paypal.com/paypalme2/gaiandcloud", inline=False)
         donate_details.add_field(name="For Paymaya donations: ", value="https://imgur.com/a/2FMKu9h", inline=False)
         donate_details.add_field(name="For more info on donation gifts and commissions: ", value="=donategifts\n=commish")
