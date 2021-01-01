@@ -18,7 +18,7 @@ class Donate(commands.Cog):
         """Help support Super Dage's hosting expenses!"""
 
         thread = "If you enjoy using DaGe and would like to help with his hosting expenses, please consider donating to my ko-fi, Paypal, or Paymaya (for PH residents or account holders). \n\nYou'll be added to Super DaGe's Godparents list and get some in-bot gifts as thanks for your support!"
-        donators = "\nKyu14#6421\ncarabarks#7523\nAmarok#2128\nnendo#3874\nblootooth#7872\nBetaFib#5891\nEmppu#6746\nkikibug#0435\nLady Lily Anne#8265\nsandra#3799\nfirelights56#8989"
+        donators = "\nKyu14#6421\ncarabarks#7523\nAmarok#2128\nnendo#3874\nblootooth#7872\nBetaFib#5891\nEmppu#6746\nkikibug#0435\nLady Lily Anne#8265\nsandra#3799\nfirelights56#8989\nbee (oh_fudgecakes)#3218"
 
         donate_details = discord.Embed(description=thread)
         donate_details.add_field(name="Check out the ko-fi post here:", value="https://ko-fi.com/post/Hello-world-Help-Donate-to-keep-Dage-alive-U7U71ROSI", inline=False)
