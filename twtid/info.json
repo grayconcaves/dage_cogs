@@ -1,5 +1,5 @@
 {
-    "author" : "tagape#3232",
+    "author" : ["tagape#3232"],
     "install_msg" : "Thank you for installing! Use `[p]twtid` to get a permanent ID from a Twitter username!",
     "name" : "Twtid",
     "short" : "Twitter ID from Username",
