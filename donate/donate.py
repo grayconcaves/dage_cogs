@@ -22,8 +22,7 @@ class Donate(commands.Cog):
 
         donate_details = discord.Embed(description=thread)
         donate_details.add_field(name="Check out his ko-fi here:", value="https://ko-fi.com/superdage", inline=False)
-        donate_details.add_field(name="For Paypal donations: ", value="https://www.paypal.com/paypalme2/gaiandcloud", inline=False)
-        donate_details.add_field(name="For Paymaya donations: ", value="https://imgur.com/a/2FMKu9h", inline=False)
+        donate_details.add_field(name="For Paymaya donations: ", value="DM or contact me", inline=False)
         donate_details.add_field(name="For more info on donation gifts and commissions: ", value="=donategifts\n=commish")
         donate_details.set_author(name="Help support Super DaGe's hosting expenses!", url="https://ko-fi.com/post/Hello-world-Help-Donate-to-keep-Dage-alive-U7U71ROSI")
         donate_details.set_thumbnail(url="https://cdn.discordapp.com/avatars/556752532773273639/500c9b09118178e5e7fbbec7ffbd132b.png?size=1024")
