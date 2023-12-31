@@ -22,7 +22,7 @@ class Shibe(commands.Cog):
     async def shibe(self, ctx):
         """Get a random shiba inu picture"""
         try:
-            async with self.session.get(self.shibapi) as s:
+            async with self.session.request("GET", self.shibapi) as s:
                 shibe = await s.json()
             await ctx.send(shibe[0])
             return
